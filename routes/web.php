@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('plantillas.AdminLTE_3_0_1.plantilla');
 });
