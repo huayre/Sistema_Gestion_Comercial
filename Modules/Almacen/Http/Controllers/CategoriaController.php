@@ -1,10 +1,13 @@
 <?php
-
 namespace Modules\Almacen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use DataTables;
+use Modules\Almacen\Entities\Categoria;
+use Modules\Almacen\Http\Requests\CategoriaFormRequest;
+use Modules\Almacen\Service\CategoriaService;
 
 class CategoriaController extends Controller
 {
@@ -12,9 +15,34 @@ class CategoriaController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    private $CategoriaService;
+
+    public function __construct(CategoriaService $CategoriaService)
     {
-        return view('almacen::index');
+        $this->CategoriaService = $CategoriaService;
+    }
+
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Categoria::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar">Editar</a>';
+
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm eliminar">Eliminar</a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+
+        return view('almacen::categoria.index');
+
     }
 
     /**
@@ -31,9 +59,10 @@ class CategoriaController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CategoriaFormRequest $request)
     {
-        //
+        $this->CategoriaService->CrearCategoria($request);
+        return response()->json(['success' => 'La categoría fue creado correctamente !!!']);
     }
 
     /**
@@ -74,6 +103,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categoria::find($id)->delete();
+        return response()->json(['success'=>'Product deleted successfully.']);
     }
 }

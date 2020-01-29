@@ -11,6 +11,4 @@
 |
 */
 
-Route::prefix('almacen')->group(function() {
-    Route::get('/', 'AlmacenController@index');
-});
+Route::resource('categoria','CategoriaController');

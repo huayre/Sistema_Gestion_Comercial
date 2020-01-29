@@ -21,5 +21,8 @@
         "psr-4": {
             "Modules\\Almacen\\": ""
         }
+    },
+    "require": {
+        "yajra/laravel-datatables-oracle": "^9.6"
     }
 }

@@ -5,9 +5,12 @@
     "keywords": [],
     "order": 0,
     "providers": [
-        "Modules\\Almacen\\Providers\\AlmacenServiceProvider"
+        "Modules\\Almacen\\Providers\\AlmacenServiceProvider",
+        "Yajra\\DataTables\\DataTablesServiceProvider"
     ],
-    "aliases": {},
+    "aliases": {
+        "DataTables" : "Yajra\\DataTables\\Facades\\DataTables"
+    },
     "files": [],
     "requires": []
 }
