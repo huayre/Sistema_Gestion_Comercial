@@ -12,7 +12,7 @@ class ProductoRepository implements Base
     public function all()
     {
         // TODO: Implement all() method.
-        $ListaProductos=Producto::paginate(10);
+        $ListaProductos=Producto::latest()->get();
         return $ListaProductos;
     }
 

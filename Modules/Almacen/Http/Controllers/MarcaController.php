@@ -1,34 +1,32 @@
 <?php
+
 namespace Modules\Almacen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Almacen\Http\Requests\CategoriaFormRequest;
-use Modules\Almacen\Service\CategoriaService;
+use Modules\Almacen\Http\Requests\MarcaFormRequest;
+use Modules\Almacen\Service\MarcaService;
 
-class CategoriaController extends Controller
+class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    private $CategoriaService;
-
-    public function __construct(CategoriaService $CategoriaService)
+    private $MarcaService;
+    public function __construct(MarcaService $MarcaService)
     {
-        $this->CategoriaService = $CategoriaService;
+        $this->MarcaService=$MarcaService;
     }
 
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-         return   $this->CategoriaService->TablaCategorias();
+        if($request->ajax()){
+        return $this->MarcaService->TablaMarcas();
         }
 
-
-        return view('almacen::categoria.index');
-
+        return view('almacen::marca.index');
     }
 
     /**
@@ -45,10 +43,10 @@ class CategoriaController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(CategoriaFormRequest $request)
+    public function store(MarcaFormRequest $request)
     {
-        $this->CategoriaService->CrearCategoria($request);
-        return response()->json(['success' => 'La categoría fue creado correctamente !!!']);
+        $this->MarcaService->CrearMarca($request);
+        return response()->json(['success' => 'La marca fue creado correctamente !!!']);
     }
 
     /**
@@ -89,7 +87,6 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $this->CategoriaService->EliminarProducto($id);
-        return response()->json(['success'=>'Product deleted successfully.']);
+        //
     }
 }

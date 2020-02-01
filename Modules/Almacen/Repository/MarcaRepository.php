@@ -3,17 +3,14 @@
 
 namespace Modules\Almacen\Repository;
 
-
-
 use Modules\Almacen\Entities\Marca;
-
 class MarcaRepository implements Base
 {
 
     public function all()
     {
         // TODO: Implement all() method.
-        $ListaMarcas=Marca::paginate(20);
+        $ListaMarcas=Marca::latest()->get();
         return $ListaMarcas;
     }
 

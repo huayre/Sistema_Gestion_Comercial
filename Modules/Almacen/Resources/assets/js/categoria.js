@@ -25,8 +25,8 @@ $(function () {
             sInfoEmpty:      "No existen registros que contabilizar",
             sInfoFiltered:   "(filtrado de un total de _MAX_ registros)",
             sInfo:           "Mostrando del registro _START_ al _END_ de un total de _TOTAL_ datos",
-            paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
-
+            paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' },
+            processing: "Cargando..."
         },
 
     });

@@ -12,3 +12,4 @@
 */
 
 Route::resource('categoria','CategoriaController');
+Route::resource('marca','MarcaController');

@@ -12,7 +12,7 @@ class CategoriaRepository implements Base
     public function all()
     {
         // TODO: Implement all() method.
-        $ListaCategorias=Categoria::Paginate(10);
+        $ListaCategorias=Categoria::latest()->get();
         return $ListaCategorias;
     }
 

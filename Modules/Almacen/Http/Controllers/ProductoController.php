@@ -1,34 +1,20 @@
 <?php
+
 namespace Modules\Almacen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Almacen\Http\Requests\CategoriaFormRequest;
-use Modules\Almacen\Service\CategoriaService;
 
-class CategoriaController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    private $CategoriaService;
-
-    public function __construct(CategoriaService $CategoriaService)
+    public function index()
     {
-        $this->CategoriaService = $CategoriaService;
-    }
-
-    public function index(Request $request)
-    {
-        if ($request->ajax()) {
-         return   $this->CategoriaService->TablaCategorias();
-        }
-
-
-        return view('almacen::categoria.index');
-
+        return view('almacen::index');
     }
 
     /**
@@ -45,10 +31,9 @@ class CategoriaController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(CategoriaFormRequest $request)
+    public function store(Request $request)
     {
-        $this->CategoriaService->CrearCategoria($request);
-        return response()->json(['success' => 'La categoría fue creado correctamente !!!']);
+        //
     }
 
     /**
@@ -89,7 +74,6 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $this->CategoriaService->EliminarProducto($id);
-        return response()->json(['success'=>'Product deleted successfully.']);
+        //
     }
 }
