@@ -2,6 +2,8 @@
 @section('contenido')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{--Modal para eliminar una marca--}}
+    @include('almacen::marca.modal_eliminar')
     {{--Modal para crear una nueva categoria--}}
     @include('almacen::marca.modal_crear')
     <h2 class="row justify-content-center text-primary">LISTADO DE MARCAS</h2>
@@ -10,7 +12,7 @@
             <i class="fas fa-plus-circle"></i> NUEVA MARCA</button>
     </h3>
     <div class="table-responsive">
-        <table class="table table-hover" id="tabla_marcas" >
+        <table class="table table-hover w-100" id="tabla_marcas" >
             <thead class="bg-primary">
             <tr>
                 <th>N°</th>

@@ -5,6 +5,7 @@ namespace Modules\Almacen\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Almacen\Service\ProductoService;
 
 class ProductoController extends Controller
 {
@@ -12,9 +13,19 @@ class ProductoController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    private $ProductoService;
+
+    public function __construct(ProductoService $ProductoService)
     {
-        return view('almacen::index');
+        $this->ProductoService=$ProductoService;
+    }
+
+    public function index(Request $request)
+    {
+        if ($request->ajax()){
+           return $this->ProductoService->ListaProductos();
+        }
+        return view('almacen::producto.index');
     }
 
     /**

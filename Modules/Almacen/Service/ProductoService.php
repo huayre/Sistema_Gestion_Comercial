@@ -7,7 +7,7 @@ namespace Modules\Almacen\Service;
 use Modules\Almacen\Repository\CategoriaRepository;
 use Modules\Almacen\Repository\MarcaRepository;
 use Modules\Almacen\Repository\ProductoRepository;
-
+use DataTables;
 class ProductoService
 {
     private $ProductoRepository;
@@ -21,19 +21,6 @@ class ProductoService
     }
 
     public function ListaProductos(){
-        return $this->ProductoRepository->all();
-    }
-    public function ListaCategorias(){
-        return $this->CategoriaRepository->CategoriasActivos();
-    }
-    public function ListaMarcas(){
-        return $this->MarcaRepository->MarcasActivos();
-    }
-    public function RegistraProducto($datos){
-        return $this->ProductoRepository->create($datos);
-    }
-
-    public function TablaProductos(){
         $data = $this->ProductoRepository->all();
         return Datatables::of($data)
             ->addIndexColumn()
@@ -45,8 +32,25 @@ class ProductoService
 
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('categoria',function($data){
+                return $data->categoria->nombre;
+            })
+            ->addColumn('marca',function ($data){
+                return $data->marca->nombre;
+            })
+
+            ->rawColumns(['action','categoria'])
             ->make(true);
     }
+    public function ListaCategorias(){
+        return $this->CategoriaRepository->CategoriasActivos();
+    }
+    public function ListaMarcas(){
+        return $this->MarcaRepository->MarcasActivos();
+    }
+    public function RegistraProducto($datos){
+        return $this->ProductoRepository->create($datos);
+    }
+
 
 }

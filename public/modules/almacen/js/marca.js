@@ -40,7 +40,7 @@ function LimpiarModal() {
 
     $('#btn_marca').click(function (e) {
         e.preventDefault();
-    $(this).html('Creando..');
+    $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
     $.ajax({
         'data':$('#formulario_marca').serialize(),
         'type':'post',
@@ -55,5 +55,40 @@ function LimpiarModal() {
             $('#error_nombre').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();
         }
     });
+});
+
+var marca_id;
+$(document).on('click','.eliminar',function () {
+    marca_id=$(this).data("id");
+    $('#modaleliminar').modal('show');
+    $('#btn_eliminar').html('Eliminar');
+    $('#btn_eliminar').attr('disabled',false);
+    $('#borrado_mensaje_error').hide();
+})
+
+$('#btn_eliminar').click(function(){
+    $('#btn_eliminar').html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Eliminando...');
+    $.ajax({
+        type: "DELETE",
+        url:"http://localhost:8000/marca/"+marca_id,
+        success:function(data)
+        {   $('#modaleliminar').modal('hide');
+
+            $.toast({
+                text: 'La Marca Fué Eliminado Correctamente',
+                icon: 'success',
+                position:'top-right',
+                bgColor: '#21D848',
+                textColor: 'white',
+                loaderBg:'#E3F85B'
+            })
+            tabla.draw();
+        },
+        error:function () {
+            $('#borrado_mensaje_error').html('<i class="fas fa-exclamation-triangle"></i>'+' La marca que deséa eliminar pertenece a un producto').show();
+            $('#btn_eliminar').html('Eliminar');
+          $('#btn_eliminar').attr('disabled',true);
+        }
+    })
 });
 

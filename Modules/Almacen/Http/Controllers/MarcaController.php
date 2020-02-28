@@ -87,6 +87,7 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->MarcaService->EliminarMarca($id);
+        return response()->json(['success'=>'Product deleted successfully.']);
     }
 }
