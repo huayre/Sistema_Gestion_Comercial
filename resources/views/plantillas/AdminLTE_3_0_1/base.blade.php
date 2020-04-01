@@ -39,9 +39,9 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+  <style></style>
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-primary">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-primary" >
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">

@@ -8,15 +8,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="formulario_marca">
+                <form id="formulario_marca_editar">
                     <div class="form-group">
                         <label class="col-form-label">Nombre <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control"  name="nombre_editar" id="nombre_editar" placeholder="Ingrese el nombre">
+                        <input type="text" class="form-control"  name="nombre" id="nombre_editar" placeholder="Ingrese el nombre">
                         <div id="error_nombre_editar"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" id="btn_edit_marca">Guardar</button>
+                        <button type="submit" class="btn btn-primary" id="btn_editar_marca">Guardar</button>
                     </div>
 
                 </form>

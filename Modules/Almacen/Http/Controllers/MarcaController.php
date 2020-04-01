@@ -77,9 +77,11 @@ class MarcaController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(MarcaFormRequest $request, $id)
     {
-        //
+        $this->MarcaService->ActualizarMarca($request,$id);
+        return response()->json(['success' => 'La marca fue actualizada correctamente !!!']);
+    
     }
 
     /**

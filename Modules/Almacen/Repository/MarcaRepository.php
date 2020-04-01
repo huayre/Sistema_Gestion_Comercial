@@ -10,7 +10,7 @@ class MarcaRepository implements Base
     public function all()
     {
         // TODO: Implement all() method.
-        $ListaMarcas=Marca::all();
+        $ListaMarcas=Marca::latest()->get();
         return $ListaMarcas;
     }
 
@@ -21,10 +21,10 @@ class MarcaRepository implements Base
         $marca->create($data->all());
     }
 
-    public function update($data, $id)
+    public function update($data,$marca)
     {
         // TODO: Implement update() method.
-        $marca=Marca::find($id);
+       // $marca=Marca::find($id);
         $marca->update($data->all());
     }
 

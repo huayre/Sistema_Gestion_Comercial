@@ -1,3 +1,4 @@
+//Token que usamos los formuarios
 $(function () {
    $.ajaxSetup({
        headers:{
@@ -5,11 +6,11 @@ $(function () {
        }
    });
 });
-
+//Mostrar  la lista de marcas en la tabla 
 var tabla=$('#tabla_marcas').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "http://localhost:8000/marca",
+    ajax: "marca",
     columns: [
         {data: 'DT_RowIndex', name: 'DT_RowIndex'},
         {data: 'nombre', name: 'nombre'},
@@ -31,10 +32,12 @@ var tabla=$('#tabla_marcas').DataTable({
 
 });
 
+
+        //CREAR
 //Funcion que permite iniciar el formulario crear -->es llamado por el boton "CREAR NUEVO USUARIO"
 function IniciarModalCrear() {
     $('#formulario_marca_crear').trigger('reset');
-    $('#error_nombre').hide();
+    $('#error_nombre_crear').hide();
     $('#btn_crear_marca').html('Guardar');
     $('#modalcrearmarca').modal('show');
 
@@ -49,9 +52,10 @@ function IniciarModalCrear() {
         'url':'marca',
         'dataType':'JSON',
         success :function () {
-            $('#modalcrearmarca').modal('hide');
-            MensageSussccesCrear();
+            $('#modalcrearmarca').modal('hide');            
+            MensageSuccessCrear();
             tabla.draw();
+           
         },
         error:function ($datos) {
             $('#btn_crear_marca').html('Guardar');
@@ -59,6 +63,24 @@ function IniciarModalCrear() {
         }
     });
 });
+
+//Alerta Success Crear
+
+function MensageSuccessCrear(){
+    $.toast({
+        text: 'La Marca Fué Creado Correctamente',
+        icon: 'success',
+        position:'top-right',
+        bgColor: '#21D848',
+        textColor: 'white',
+        loaderBg:'#E3F85B'
+    })  
+}
+
+
+
+
+   //ELIMINAR
 
 var marca_id;
 $(document).on('click','.eliminar',function () {
@@ -75,10 +97,9 @@ $('#btn_eliminar').click(function(){
         type: "DELETE",
         url:"http://localhost:8000/marca/"+marca_id,
         success:function(data)
-        {   $('#modaleliminar').modal('hide');
-        MensageSussccesEmininar();
-            
+        {   $('#modaleliminar').modal('hide');     
             tabla.draw();
+            MensageSuccessEmininar();
         },
         error:function () {
             $('#borrado_mensaje_error').html('<i class="fas fa-exclamation-triangle"></i>'+' La marca que deséa eliminar pertenece a un producto').show();
@@ -88,7 +109,8 @@ $('#btn_eliminar').click(function(){
     })
 });
 
-function MensageSussccesEmininar(){
+//Mensaje Success Elimar 
+function MensageSuccessEmininar(){
     $.toast({
         text: 'La Marca Fué Eliminado Correctamente',
         icon: 'success',
@@ -100,9 +122,54 @@ function MensageSussccesEmininar(){
   
 }
 
-function MensageSussccesCrear(){
+
+    //EDITAR
+//funcion que permite iniciar el modal cuando presionamos el boton EDITAR
+function IniciarModalEditar() {
+    $('#formulario_marca_editar').trigger('reset');
+    $('#error_nombre_editar').hide();
+    $('#btn_editar_marca').html('Guardar');
+    $('#modaleditarmarca').modal('show');
+
+}
+//Pemite extraer los datos para editar la marca
+var IdMarca
+$('body').on('click','.editar',function(){
+    IniciarModalEditar();
+    IdMarca=$(this).data('id');   
+    $.get("marca/"+IdMarca +'/edit', function (datos) {
+    $('#nombre_editar').val(datos.nombre);
+    
+})
+});
+
+//Guardar cambios de una marca 
+
+$('#btn_editar_marca').click(function (e) {
+    e.preventDefault();
+$(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Actualizando...');
+$.ajax({
+    'data':$('#formulario_marca_editar').serialize(),
+    'type':'PUT',
+    'url':'marca/'+IdMarca,
+    'dataType':'JSON',
+    success :function () {
+        $('#modaleditarmarca').modal('hide');
+        tabla.draw();
+        MensageSuccessEditar();
+       
+    },
+    error:function ($datos) {
+        $('#btn_editar_marca').html('Guardar');
+        $('#error_nombre_editar').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();
+    }
+});
+});
+
+//Mensaje Success Editar
+function MensageSuccessEditar(){
     $.toast({
-        text: 'La Marca Fué Creado Correctamente',
+        text: 'Los Datos Fueron Actualizados Correctamente',
         icon: 'success',
         position:'top-right',
         bgColor: '#21D848',
@@ -111,14 +178,3 @@ function MensageSussccesCrear(){
     })
   
 }
-
-$('body').on('click','.editar',function(){
-
-    var IdMarca=$(this).data('id');
-    $('#modaleditarmarca').modal('show');
-   $.get("marca/"+IdMarca +'/edit', function (datos) {
-    $('#nombre_editar').val(datos.nombre);
-    
-})
-
-});

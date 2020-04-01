@@ -38,11 +38,7 @@ class MarcaService
 
     public function CrearMarca($data){
         $this->MarcaRepository->create($data);
-    }
-
-    public function ActualizarMarca($data,$id){
-        $this->MarcaRepository->update($data,$id);
-    }
+    }  
 
     public function EliminarMarca($id){
         $this->MarcaRepository->delete($id);
@@ -51,4 +47,9 @@ class MarcaService
     public function BuscarMarca($id){
         return $this->MarcaRepository->find($id);
     }
+
+   public function ActualizarMarca($data,$id){
+        $marca=$this->MarcaRepository->find($id);
+        $this->MarcaRepository->update($data,$marca);
+   }
 }
