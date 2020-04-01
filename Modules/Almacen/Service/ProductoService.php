@@ -39,17 +39,17 @@ class ProductoService
                 return $data->marca->nombre;
             })
 
-            ->rawColumns(['action','categoria'])
+            ->rawColumns(['action'])
             ->make(true);
     }
     public function ListaCategorias(){
-        return $this->CategoriaRepository->CategoriasActivos();
+        return $this->CategoriaRepository->all();
     }
     public function ListaMarcas(){
-        return $this->MarcaRepository->MarcasActivos();
+        return $this->MarcaRepository->all();
     }
-    public function RegistraProducto($datos){
-        return $this->ProductoRepository->create($datos);
+    public function RegistrarProducto($datos){
+        $this->ProductoRepository->create($datos);
     }
 
 

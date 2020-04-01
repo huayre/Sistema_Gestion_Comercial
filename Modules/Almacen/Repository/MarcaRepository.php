@@ -10,7 +10,7 @@ class MarcaRepository implements Base
     public function all()
     {
         // TODO: Implement all() method.
-        $ListaMarcas=Marca::latest()->get();
+        $ListaMarcas=Marca::all();
         return $ListaMarcas;
     }
 
@@ -38,9 +38,7 @@ class MarcaRepository implements Base
     public function find($id)
     {
         // TODO: Implement find() method.
+      return  $marca=Marca::find($id);
     }
-    //metodos adicionales
-    public  function MarcasActivos(){
-        return $marca=Marca::where('estado','=','Activo')->get();
-    }
+   
 }

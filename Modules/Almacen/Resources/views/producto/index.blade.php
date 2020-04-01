@@ -1,24 +1,27 @@
-@extends('plantillas.AdminLTE_3_0_1.plantilla')
+@extends('plantillas.AdminLTE_3_0_1.base')
 @section('contenido')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
     {{--Modal para eliminar una nueva categoria--}}
     @include('almacen::categoria.modal_eliminar')
-    {{--Modal para crear una nueva categoria--}}
-    @include('almacen::categoria.modal_crear')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    {{--Modal para crear una nuevo producto--}}
+    @include('almacen::producto.modal_crear')
+    
     <h2 class="row justify-content-center text-primary">LISTADO DE PRODUCTOS</h2>
     <h3>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearcategoria" data-whatever="@mdo" onclick="LimpiarModal()">
-            <i class="fas fa-plus-circle"></i> NUEVA CATEGORÍA</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearproducto" data-whatever="@mdo" onclick="LimpiarModal()">
+            <i class="fas fa-plus-circle"></i> NUEVO PRODUCTO</button>
     </h3>
   <div class="table-responsive">
-    <table class="table table-hover" id="tabla_productos" >
+    <table class="table table-hover w-100" id="tabla_productos" >
         <thead class="bg-primary">
         <tr>
             <th>N°</th>
             <th>Nombre</th>
             <th>Marca</th>
             <th>Categoría</th>
+            <th>Precio</th>
+            <th>Alerta</th>
             <th width="280px">Opciones</th>
         </tr>
         </thead>

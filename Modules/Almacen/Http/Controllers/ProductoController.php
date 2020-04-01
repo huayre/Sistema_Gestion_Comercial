@@ -5,6 +5,7 @@ namespace Modules\Almacen\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Almacen\Http\Requests\ProductoFormRequest;
 use Modules\Almacen\Service\ProductoService;
 
 class ProductoController extends Controller
@@ -25,7 +26,9 @@ class ProductoController extends Controller
         if ($request->ajax()){
            return $this->ProductoService->ListaProductos();
         }
-        return view('almacen::producto.index');
+        $ListaCategorias=$this->ProductoService->ListaCategorias();
+        $ListaMarcas=$this->ProductoService->ListaMarcas();
+        return view('almacen::producto.index',compact('ListaCategorias','ListaMarcas'));
     }
 
     /**
@@ -42,9 +45,10 @@ class ProductoController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ProductoFormRequest $request)
     {
-        //
+        $this->ProductoService->RegistrarProducto($request);
+        return response()->json(['success' => 'El producto fue creado correctamente !!!']);
     }
 
     /**

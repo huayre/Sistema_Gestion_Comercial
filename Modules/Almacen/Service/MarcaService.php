@@ -47,5 +47,8 @@ class MarcaService
     public function EliminarMarca($id){
         $this->MarcaRepository->delete($id);
     }
-
+    
+    public function BuscarMarca($id){
+        return $this->MarcaRepository->find($id);
+    }
 }

@@ -1,0 +1,16 @@
+{
+    "name": "Compras",
+    "alias": "compras",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Compras\\Providers\\ComprasServiceProvider",
+        "Yajra\\DataTables\\DataTablesServiceProvider"
+    ],
+    "aliases": {
+        "DataTables" : "Yajra\\DataTables\\Facades\\DataTables"
+    },
+    "files": [],
+    "requires": []
+}

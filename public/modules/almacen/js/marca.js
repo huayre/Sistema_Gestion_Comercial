@@ -13,6 +13,7 @@ var tabla=$('#tabla_marcas').DataTable({
     columns: [
         {data: 'DT_RowIndex', name: 'DT_RowIndex'},
         {data: 'nombre', name: 'nombre'},
+        {data:'created_at',name:'created_at'},
         {data: 'action', name: 'action', orderable: false, searchable: false},
     ],
 
@@ -30,29 +31,31 @@ var tabla=$('#tabla_marcas').DataTable({
 
 });
 
-function LimpiarModal() {
-    $('#formulario_marca').trigger('reset');
+//Funcion que permite iniciar el formulario crear -->es llamado por el boton "CREAR NUEVO USUARIO"
+function IniciarModalCrear() {
+    $('#formulario_marca_crear').trigger('reset');
     $('#error_nombre').hide();
-    $('#btn_marca').html('Guardar')
+    $('#btn_crear_marca').html('Guardar');
     $('#modalcrearmarca').modal('show');
 
 }
-
-    $('#btn_marca').click(function (e) {
+//permite crear una nueva marca ->es ejecutado cuando presionamos el boton CREAR
+    $('#btn_crear_marca').click(function (e) {
         e.preventDefault();
     $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
     $.ajax({
-        'data':$('#formulario_marca').serialize(),
+        'data':$('#formulario_marca_crear').serialize(),
         'type':'post',
-        'url':'http://localhost:8000/marca',
+        'url':'marca',
         'dataType':'JSON',
         success :function () {
             $('#modalcrearmarca').modal('hide');
+            MensageSussccesCrear();
             tabla.draw();
         },
         error:function ($datos) {
-            $('#btn_marca').html('Guardar');
-            $('#error_nombre').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();
+            $('#btn_crear_marca').html('Guardar');
+            $('#error_nombre_crear').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();
         }
     });
 });
@@ -73,15 +76,8 @@ $('#btn_eliminar').click(function(){
         url:"http://localhost:8000/marca/"+marca_id,
         success:function(data)
         {   $('#modaleliminar').modal('hide');
-
-            $.toast({
-                text: 'La Marca Fué Eliminado Correctamente',
-                icon: 'success',
-                position:'top-right',
-                bgColor: '#21D848',
-                textColor: 'white',
-                loaderBg:'#E3F85B'
-            })
+        MensageSussccesEmininar();
+            
             tabla.draw();
         },
         error:function () {
@@ -92,3 +88,37 @@ $('#btn_eliminar').click(function(){
     })
 });
 
+function MensageSussccesEmininar(){
+    $.toast({
+        text: 'La Marca Fué Eliminado Correctamente',
+        icon: 'success',
+        position:'top-right',
+        bgColor: '#21D848',
+        textColor: 'white',
+        loaderBg:'#E3F85B'
+    })
+  
+}
+
+function MensageSussccesCrear(){
+    $.toast({
+        text: 'La Marca Fué Creado Correctamente',
+        icon: 'success',
+        position:'top-right',
+        bgColor: '#21D848',
+        textColor: 'white',
+        loaderBg:'#E3F85B'
+    })
+  
+}
+
+$('body').on('click','.editar',function(){
+
+    var IdMarca=$(this).data('id');
+    $('#modaleditarmarca').modal('show');
+   $.get("marca/"+IdMarca +'/edit', function (datos) {
+    $('#nombre_editar').val(datos.nombre);
+    
+})
+
+});

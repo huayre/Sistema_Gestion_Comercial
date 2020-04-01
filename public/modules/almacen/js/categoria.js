@@ -43,7 +43,7 @@ $(function () {
 //Crear una nueva categoria
 $('#btn_categoria').click(function (e) {
     e.preventDefault();
-    $(this).html('Creando...');
+    $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
 
     $.ajax({
         data: $('#formulario_categoria').serialize(),

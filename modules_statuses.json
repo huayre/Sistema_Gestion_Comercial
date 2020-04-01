@@ -1,3 +1,5 @@
 {
-    "Almacen": true
+    "Almacen": true,
+    "Compras": true,
+    "Ventas": true
 }

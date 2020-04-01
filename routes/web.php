@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('plantillas.AdminLTE_3_0_1.plantilla');
+Route::view('/','auth.login');
+Route::view('inicio','plantillas.AdminLTE_3_0_1.base');
+Route::view('login1','login.login1');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('prueba',function(){
+    return view('livewire.prueba');
 });

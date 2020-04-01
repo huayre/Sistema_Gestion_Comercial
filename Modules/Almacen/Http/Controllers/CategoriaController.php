@@ -25,8 +25,6 @@ class CategoriaController extends Controller
         if ($request->ajax()) {
          return   $this->CategoriaService->TablaCategorias();
         }
-
-
         return view('almacen::categoria.index');
 
     }

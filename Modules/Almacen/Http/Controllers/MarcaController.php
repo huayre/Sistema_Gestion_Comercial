@@ -66,7 +66,9 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        return view('almacen::edit');
+        $marca=$this->MarcaService->BuscarMarca($id);
+        
+        return response()->json($marca);
     }
 
     /**

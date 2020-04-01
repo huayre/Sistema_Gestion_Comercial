@@ -1,3 +1,10 @@
+$(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
 
 var tabla=$('#tabla_productos').DataTable({
     processing: true,
@@ -8,6 +15,8 @@ var tabla=$('#tabla_productos').DataTable({
         {data: 'nombre', name: 'nombre'},
         {data: 'marca', name: 'marca'},
         {data: 'categoria', name: 'categoria'},
+        {data:'precio_compra',name:'precio_compra'},
+        {data:'alerta_minima',name:'alerta_minima'},
         {data: 'action', name: 'action', orderable: false, searchable: false},
     ],
 
@@ -23,4 +32,39 @@ var tabla=$('#tabla_productos').DataTable({
         processing: "Cargando..."
     },
 
+});
+
+//funcion que  permite limpiar un modal cuando se inicialice
+function LimpiarModal(){
+    $('#formulario_producto').trigger('reset');
+    $('#btn_producto').html('Guardar');
+    $('#error_nombre').hide();
+    $('#error_categoria').hide();
+    $('#error_marca').hide();
+    $('#error_codigo_barras').hide();
+    $('#error_precio_venta_unidad').hide();
+    $('#error_stock').hide();
+    $('#error_precio_compra').hide();
+    $('#error_alerta').hide();
+}
+//crear un nuevo producto
+$('#btn_producto').click(function (e) {
+    e.preventDefault();
+    $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
+
+    $.ajax({
+        data:$('#formulario_producto').serialize(),
+        url: "http://localhost:8000/producto",
+        type: "POST",
+        dataType: 'json',
+        success: function () {
+            $('#modalcrearproducto').modal('hide');
+            tabla.draw();
+        },
+        error: function ($datos) {
+            $('#btn_producto').html('Guardar');
+            $('#error_nombre').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0]+'</p>').show();
+            
+        }
+    });
 });

@@ -1,4 +1,4 @@
-@extends('plantillas.AdminLTE_3_0_1.plantilla')
+@extends('plantillas.AdminLTE_3_0_1.base')
 @section('contenido')
     {{--Modal para eliminar una nueva categoria--}}
     @include('almacen::categoria.modal_eliminar')

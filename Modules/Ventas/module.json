@@ -1,0 +1,16 @@
+{
+    "name": "Ventas",
+    "alias": "ventas",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Ventas\\Providers\\VentasServiceProvider",
+        "Yajra\\DataTables\\DataTablesServiceProvider"
+    ],
+    "aliases": {
+        "DataTables" : "Yajra\\DataTables\\Facades\\DataTables"
+    },
+    "files": [],
+    "requires": []
+}

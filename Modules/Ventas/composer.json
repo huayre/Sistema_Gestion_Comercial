@@ -1,0 +1,29 @@
+{
+    "name": "nwidart/ventas",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Ventas\\Providers\\VentasServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Ventas\\": ""
+        }
+    },
+    "require": {
+        "yajra/laravel-datatables-oracle": "^9.6"
+    }
+
+}
