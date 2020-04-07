@@ -41,9 +41,7 @@ function LimpiarModal(){
     $('#error_tipo_documento').hide();
     $('#error_numero_documento').hide();
     $('#error_nombres').hide();
-    $('#error_direccion').hide();
-    $('#error_telefono').hide();
-    $('#error_email').hide();
+   
 }
 
 $('#btn_cliente').click(function(e){
@@ -59,8 +57,11 @@ $('#btn_cliente').click(function(e){
       $('#modalcrearcliente').modal('hide');
       table.draw();
   },
-  error:function(datos){
-      
+  error:function($datos){
+    $('#btn_cliente').html('Guardar');    
+    $('#error_numero_documento').html('<p class="text-danger">'+$datos.responseJSON.errors.numero_documento[0] + '</p>').show();   
+    $('#error_nombres').html('<p class="text-danger">'+$datos.responseJSON.errors.nombres[0] + '</p>').show(); 
+    $('#error_tipo_documento').html('<p class="text-danger">'+$datos.responseJSON.errors.tipo_documento[0] + '</p>').show();
   }
 
  });

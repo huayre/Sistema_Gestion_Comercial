@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form id="formulario_marca_crear">
                     <div class="form-group">
-                        <label class="col-form-label">Nombre <span class="text-danger">*</span></label>
+                        <label class="col-form-label">Nombre <span class="text-danger">(*)</span></label>
                         <input type="text" class="form-control"  name="nombre"  placeholder="Ingrese el nombre">
                         <div id="error_nombre_crear"></div>
                     </div>

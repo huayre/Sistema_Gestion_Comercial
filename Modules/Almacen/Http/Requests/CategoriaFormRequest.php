@@ -30,7 +30,7 @@ class CategoriaFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'nombre.required' => 'El campo nombre es obligatorio',
+            'nombre.required' => 'El nombre de la categoria es  obligatorio',
             'nombre.unique'=>'La categoria ya existe..!!'
         ];
     }

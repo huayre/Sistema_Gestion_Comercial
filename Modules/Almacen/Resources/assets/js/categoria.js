@@ -66,17 +66,34 @@ var categoria_id;
 $(document).on('click', '.eliminar', function(){
         categoria_id=$(this).data("id");
         $('#modaleliminar').modal('show');
-    $('#btn_eliminar').html('Eliminar');
+        $('#btn_eliminar').html('Eliminar');
+        $('#borrado_mensaje_error').hide();
+        $('#btn_eliminar').attr('disabled',false);
+
 
 });
 
 $('#btn_eliminar').click(function(){
-    $('#btn_eliminar').html('Eliminando...');
+    $('#btn_eliminar').html('<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Eliminando...');
     $.ajax({
         type: "DELETE",
         url:"http://localhost:8000/categoria/"+categoria_id,
-        success:function(data)
-        {   $('#modaleliminar').modal('hide');
+        success:function(data){
+        $('#modaleliminar').modal('hide');
+        table.draw();
+        MensageSuccessEliminar();
+        },
+        error:function(){
+            $('#borrado_mensaje_error').html('<i class="fas fa-exclamation-triangle"></i>'+' La Categoria que deséa eliminar pertenece a un producto').show();
+            $('#btn_eliminar').html('Eliminar');
+            $('#btn_eliminar').attr('disabled',true);
+        }
+    })
+});
+
+
+function MensageSuccessEliminar(){
+    {  
 
             $.toast({
                 text: 'La Categoría Fué Eliminado Correctamente',
@@ -88,13 +105,59 @@ $('#btn_eliminar').click(function(){
             })
             table.draw();
         }
-    })
+}
+
+
+
+//EDITAR
+function  IniciarModalEditar() {
+    $('#formulario_categoria_editar').trigger('reset');
+    $('#btn_categoria_editar').html('Guardar');
+    $('#error_nombre_editar').hide();
+    $('#modaleditarcategoria').modal('show');
+ }
+ var categoria_id_editar;
+$('body').on('click','.editar',function(){
+    categoria_id_editar=$(this).data("id");
+    IniciarModalEditar();        
+    $.get("categoria/"+categoria_id_editar+'/edit', function (datos) {
+    $('#nombre_editar').val(datos.nombre);
+    $('#descripcion_editar').val(datos.descripcion);
+    
+})
 });
 
-var categoria_id_editar;
-$(document).on('click','.editar',function () {
-    categoria_id_editar=$(this).data("id");
-    $('#modalcrearcategoria').modal('show');
-    console.log(categoria_id_editar);
-
+$('#btn_categoria_editar').click(function(e){
+    e.preventDefault();
+    $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Actualizando...');
+    $.ajax({
+        'data':$('#formulario_categoria_editar').serialize(),
+        'type':'PUT',
+        'url':'categoria/'+categoria_id_editar,
+        'dataType':'JSON',
+        success :function () {
+            $('#modaleditarcategoria').modal('hide');
+            table.draw();
+            MensageSuccessEditar();
+           
+        },
+        error:function ($datos) {
+            $('#btn_categoria_editar').html('Guardar');
+            $('#error_nombre_editar').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();            
+        }
+    });
 })
+
+//Mensaje Success Editar
+function MensageSuccessEditar(){
+    $.toast({
+        text: 'Los Datos Fueron Actualizados Correctamente',
+        icon: 'success',
+        position:'top-right',
+        bgColor: '#21D848',
+        textColor: 'white',
+        loaderBg:'#E3F85B'
+    })
+  
+}
+

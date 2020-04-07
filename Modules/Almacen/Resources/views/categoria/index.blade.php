@@ -2,6 +2,10 @@
 @section('contenido')
     {{--Modal para eliminar una nueva categoria--}}
     @include('almacen::categoria.modal_eliminar')
+
+    {{--Modal para editar una nueva categoria--}}
+    @include('almacen::categoria.modal_editar')
+
     {{--Modal para crear una nueva categoria--}}
     @include('almacen::categoria.modal_crear')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -12,7 +16,7 @@
             <i class="fas fa-plus-circle"></i> NUEVA CATEGORÍA</button>
     </h3>
   <div class="table-responsive">
-    <table class="table table-hover" id="tabla_categorias" >
+    <table class="table table-hover w-100" id="tabla_categorias" >
         <thead class="bg-primary">
         <tr>
             <th>N°</th>

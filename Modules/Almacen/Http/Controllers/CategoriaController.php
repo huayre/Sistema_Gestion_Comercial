@@ -65,8 +65,11 @@ class CategoriaController extends Controller
      * @return Response
      */
     public function edit($id)
-    {
-        return view('almacen::edit');
+    {   
+        $Categoria=$this->CategoriaService->BuscarCategoria($id);
+         
+        return response()->json($Categoria);
+
     }
 
     /**
@@ -75,9 +78,11 @@ class CategoriaController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriaFormRequest $request, $id)
     {
-        //
+        $this->CategoriaService->ActualizarCategoria($request,$id);
+
+        return response()->json(['success'=>'La Categoria fue actualizado correctamente']);
     }
 
     /**

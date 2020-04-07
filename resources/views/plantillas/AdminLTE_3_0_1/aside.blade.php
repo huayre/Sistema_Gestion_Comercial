@@ -26,9 +26,9 @@
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                 <i class="nav-icon fas fa-shopping-cart"></i>
                             <p>
-                                Ventas
+                                 Ventas
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -49,7 +49,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-store-alt"></i>
                             <p>
                                 Almacén
                                 <i class="right fas fa-angle-left"></i>
@@ -78,7 +78,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-truck"></i>
                             <p>
                                 Compras
                                 <i class="right fas fa-angle-left"></i>
@@ -100,6 +100,101 @@
                         </ul>
                     </li>
                     
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                 Acceso al Sistema
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('usuario.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Usarios</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('categoria.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Compras</p>
+                                </a>
+                            </li>                          
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Reporte de Ventas
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('proveedor.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Proveedores</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('categoria.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Compras</p>
+                                </a>
+                            </li>                          
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Reporte de Compras
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('proveedor.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Proveedores</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('categoria.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Compras</p>
+                                </a>
+                            </li>                          
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Maestro
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('proveedor.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Proveedores</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('categoria.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>Compras</p>
+                                </a>
+                            </li>                          
+                        </ul>
+                    </li>
                    
                 </ul>
             </nav>

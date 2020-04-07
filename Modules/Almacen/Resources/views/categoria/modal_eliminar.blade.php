@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h5 class="text-primary text-center"></h5>
+            <h6 class="text-danger text-center" id="borrado_mensaje_error"></h6>
                 <form>
 
                     <div class="modal-footer">

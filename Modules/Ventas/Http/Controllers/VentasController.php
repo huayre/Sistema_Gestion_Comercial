@@ -5,15 +5,22 @@ namespace Modules\Ventas\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
+use Modules\Ventas\Service\ClienteService;
+use Modules\Ventas\Service\VentaService;
 class VentasController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
-    {
+    private $VentaService;
+     public function __construct(VentaService $VentaService){
+
+        $this->VentaService=$VentaService;
+     }
+
+    public function index()    { 
+        
         return view('ventas::ventas.index');
     }
 
@@ -22,8 +29,10 @@ class VentasController extends Controller
      * @return Response
      */
     public function create()
-    {
-        return view('ventas::ventas.nueva_venta');
+    {  
+        $ListaClientes=$this->VentaService->ListaClientes();
+        $ListaProductos=$this->VentaService->ListaProductos();
+        return view('ventas::ventas.nueva_venta',compact('ListaClientes','ListaProductos'));
     }
 
     /**

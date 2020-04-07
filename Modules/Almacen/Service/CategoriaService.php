@@ -46,5 +46,9 @@ class CategoriaService
           ->make(true);
   }
 
+  public function BuscarCategoria($id){
+     return $this->CategoriaRepository->find($id);
+  }
+
 
 }

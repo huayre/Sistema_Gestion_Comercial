@@ -40,10 +40,9 @@ class CategoriaRepository implements Base
     public function find($id)
     {
         // TODO: Implement find() method.
+        $categoria=Categoria::find($id);
+        return $categoria;
     }
 
-    //Metodos Adicionales
-    public function CategoriasActivos(){
-        return $categoria=Categoria::where('estado','=','Activo')->get();
-    }
+    
 }

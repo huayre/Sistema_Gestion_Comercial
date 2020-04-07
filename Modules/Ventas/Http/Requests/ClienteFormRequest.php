@@ -13,8 +13,11 @@ class ClienteFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        return [        
+            'nombres'=>'required',
+            'tipo_documento'=>'required',
+            'numero_documento'=>'required'
+            
         ];
     }
 
@@ -26,5 +29,16 @@ class ClienteFormRequest extends FormRequest
     public function authorize()
     {
         return true;
+    }
+
+    public function messages(){
+
+        return[
+            'nombres.required'=>'El nombre del cliente es obligatorio',
+            'tipo_documento.required'=>'Selecciona un tipo de documento',
+            'numero_documento.required'=>'El número documento es obligatorio'
+            
+        ];
+        
     }
 }
