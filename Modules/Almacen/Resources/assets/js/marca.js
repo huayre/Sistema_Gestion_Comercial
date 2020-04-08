@@ -95,7 +95,7 @@ $('#btn_eliminar').click(function(){
     $('#btn_eliminar').html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Eliminando...');
     $.ajax({
         type: "DELETE",
-        url:"http://localhost:8000/marca/"+marca_id,
+        url:"marca/"+marca_id,
         success:function(data)
         {   $('#modaleliminar').modal('hide');     
             tabla.draw();

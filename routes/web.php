@@ -23,3 +23,5 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('prueba',function(){
     return view('livewire.prueba');
 });
+
+Route::get('spa', 'SpaController@show');

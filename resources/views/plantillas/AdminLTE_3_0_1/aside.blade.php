@@ -198,7 +198,10 @@
                                     <i class="far fa-circle nav-icon text-primary"></i>
                                     <p>Compras</p>
                                 </a>
-                            </li>                          
+                            </li> 
+                            <li>
+                                <button type="submit" class="btn btn-primary" id="marca">OK</button>
+                            </li>                         
                         </ul>
                     </li>
                    

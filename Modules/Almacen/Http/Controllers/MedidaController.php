@@ -64,7 +64,8 @@ class MedidaController extends Controller
      */
     public function edit($id)
     {
-        return view('almacen::edit');
+        $UnidadMedida=$this->UnidadMedidaService->BuscarUnidadMedida($id);
+        return response()->json($UnidadMedida);
     }
 
     /**
@@ -73,9 +74,10 @@ class MedidaController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(MedidaFormRequest $request, $id)
     {
-        //
+        $this->UnidadMedidaService->ActualizarUnidadMedida($request,$id);
+        return response()->json(['success'=>'la unidad de medida fue creado correctamente...!!!']);
     }
 
     /**
@@ -85,6 +87,7 @@ class MedidaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->UnidadMedidaService->EliminarUnidadMedida($id);
+        return response()->json(['success'=>'Product deleted successfully.']);
     }
 }

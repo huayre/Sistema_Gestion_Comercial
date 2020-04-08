@@ -89,9 +89,9 @@ function MensageSuccessCrear(){
 
    //ELIMINAR
 
-var marca_id;
+var medida_id_eliminar;
 $(document).on('click','.eliminar',function () {
-    marca_id=$(this).data("id");
+    medida_id_eliminar=$(this).data("id");
     $('#modaleliminar').modal('show');
     $('#btn_eliminar').html('Eliminar');
     $('#btn_eliminar').attr('disabled',false);
@@ -102,14 +102,14 @@ $('#btn_eliminar').click(function(){
     $('#btn_eliminar').html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Eliminando...');
     $.ajax({
         type: "DELETE",
-        url:"http://localhost:8000/marca/"+marca_id,
+        url:"medida/"+ medida_id_eliminar,
         success:function(data)
         {   $('#modaleliminar').modal('hide');     
             tabla.draw();
             MensageSuccessEmininar();
         },
         error:function () {
-            $('#borrado_mensaje_error').html('<i class="fas fa-exclamation-triangle"></i>'+' La marca que deséa eliminar pertenece a un producto').show();
+            $('#borrado_mensaje_error').html('<i class="fas fa-exclamation-triangle"></i>'+' La Unidad de Medida que deséa eliminar pertenece a un producto').show();
             $('#btn_eliminar').html('Eliminar');
           $('#btn_eliminar').attr('disabled',true);
         }
@@ -119,7 +119,7 @@ $('#btn_eliminar').click(function(){
 //Mensaje Success Elimar 
 function MensageSuccessEmininar(){
     $.toast({
-        text: 'La Marca Fué Eliminado Correctamente',
+        text: 'La Unidad de Medida Fué Eliminado Correctamente',
         icon: 'success',
         position:'top-right',
         bgColor: '#21D848',
@@ -133,18 +133,18 @@ function MensageSuccessEmininar(){
     //EDITAR
 //funcion que permite iniciar el modal cuando presionamos el boton EDITAR
 function IniciarModalEditar() {
-    $('#formulario_marca_editar').trigger('reset');
+    $('#formulario_medida_editar').trigger('reset');
     $('#error_nombre_editar').hide();
-    $('#btn_editar_marca').html('Guardar');
-    $('#modaleditarmarca').modal('show');
+    $('#btn_editar_medida').html('Guardar');
+    $('#modaleditarmedida').modal('show');
 
 }
 //Pemite extraer los datos para editar la marca
-var IdMarca
+var medida_id_editar
 $('body').on('click','.editar',function(){
     IniciarModalEditar();
-    IdMarca=$(this).data('id');   
-    $.get("marca/"+IdMarca +'/edit', function (datos) {
+    medida_id_editar=$(this).data('id');   
+    $.get("medida/"+medida_id_editar+'/edit', function (datos) {
     $('#nombre_editar').val(datos.nombre);
     
 })
@@ -152,22 +152,22 @@ $('body').on('click','.editar',function(){
 
 //Guardar cambios de una marca 
 
-$('#btn_editar_marca').click(function (e) {
+$('#btn_editar_medida').click(function (e) {
     e.preventDefault();
 $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Actualizando...');
 $.ajax({
-    'data':$('#formulario_marca_editar').serialize(),
+    'data':$('#formulario_medida_editar').serialize(),
     'type':'PUT',
-    'url':'marca/'+IdMarca,
+    'url':'medida/'+medida_id_editar,
     'dataType':'JSON',
     success :function () {
-        $('#modaleditarmarca').modal('hide');
+        $('#modaleditarmedida').modal('hide');
         tabla.draw();
         MensageSuccessEditar();
        
     },
     error:function ($datos) {
-        $('#btn_editar_marca').html('Guardar');
+        $('#btn_editar_medida').html('Guardar');
         $('#error_nombre_editar').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();
     }
 });

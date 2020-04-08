@@ -39,7 +39,7 @@ class UnidadMedidaRepository implements Base
     public function find($id)
     {
         // TODO: Implement find() method.
-      return  $marca=Medida::find($id);
+      return  $medida=Medida::find($id);
     }
    
 }
