@@ -57,11 +57,23 @@ $('#btn_cliente').click(function(e){
       $('#modalcrearcliente').modal('hide');
       table.draw();
   },
-  error:function($datos){
-    $('#btn_cliente').html('Guardar');    
-    $('#error_numero_documento').html('<p class="text-danger">'+$datos.responseJSON.errors.numero_documento[0] + '</p>').show();   
-    $('#error_nombres').html('<p class="text-danger">'+$datos.responseJSON.errors.nombres[0] + '</p>').show(); 
-    $('#error_tipo_documento').html('<p class="text-danger">'+$datos.responseJSON.errors.tipo_documento[0] + '</p>').show();
+  error:function(datos){
+    $('#btn_cliente').html('Guardar');  
+    if(datos.responseJSON.hasOwnProperty('errors')){
+        //valido que tenga el error nombre
+        if(datos.responseJSON.errors.nombres){
+            $('#error_nombres').html('<p class="text-danger">'+datos.responseJSON.errors.nombres[0] + '</p>').show();
+        }
+        if(datos.responseJSON.errors.numero_documento){
+            $('#error_numero_documento').html('<p class="text-danger">'+datos.responseJSON.errors.numero_documento[0] + '</p>').show(); 
+        }
+        if(datos.responseJSON.errors.tipo_documento){
+            $('#error_tipo_documento').html('<p class="text-danger">'+datos.responseJSON.errors.tipo_documento[0] + '</p>').show();
+        }
+    }  
+      
+    
+    
   }
 
  });

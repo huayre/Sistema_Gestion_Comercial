@@ -7,10 +7,10 @@ $(function () {
    });
 });
 //Mostrar  la lista de marcas en la tabla 
-var tabla=$('#tabla_marcas').DataTable({
+var tabla=$('#tabla_medidas').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "marca",
+    ajax: "medida",
     columns: [
         {data: 'DT_RowIndex', name: 'DT_RowIndex'},
         {data: 'nombre', name: 'nombre'},
@@ -36,30 +36,37 @@ var tabla=$('#tabla_marcas').DataTable({
         //CREAR
 //Funcion que permite iniciar el formulario crear -->es llamado por el boton "CREAR NUEVO USUARIO"
 function IniciarModalCrear() {
-    $('#formulario_marca_crear').trigger('reset');
+    $('#formulario_medida_crear').trigger('reset');
     $('#error_nombre_crear').hide();
-    $('#btn_crear_marca').html('Guardar');
-    $('#modalcrearmarca').modal('show');
+    $('#btn_crear_medida').html('Guardar');
+    $('#modalcrearmedida').modal('show');
 
 }
 //permite crear una nueva marca ->es ejecutado cuando presionamos el boton CREAR
-    $('#btn_crear_marca').click(function (e) {
+    $('#btn_crear_medida').click(function (e) {
         e.preventDefault();
     $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
     $.ajax({
-        'data':$('#formulario_marca_crear').serialize(),
+        'data':$('#formulario_medida_crear').serialize(),
         'type':'post',
-        'url':'marca',
+        'url':'medida',
         'dataType':'JSON',
         success :function () {
-            $('#modalcrearmarca').modal('hide');            
+            $('#modalcrearmedida').modal('hide');            
             MensageSuccessCrear();
             tabla.draw();
            
         },
         error:function (datos) {
-            $('#btn_crear_marca').html('Guardar');
-            $('#error_nombre_crear').html('<p class="text-danger">'+datos.responseJSON.errors.nombre[0] + '</p>').show();
+            $('#btn_crear_medida').html('Guardar');
+            if(datos.responseJSON.hasOwnProperty('errors')){
+                if(datos.responseJSON.errors.nombre){
+                    $('#error_nombre_crear').html('<p class="text-danger">'+datos.responseJSON.errors.nombre[0] + '</p>').show();
+                }
+               
+            }
+            
+           
         }
     });
 });
@@ -68,7 +75,7 @@ function IniciarModalCrear() {
 
 function MensageSuccessCrear(){
     $.toast({
-        text: 'La Marca Fué Creado Correctamente',
+        text: 'La Medida Fué Creado Correctamente',
         icon: 'success',
         position:'top-right',
         bgColor: '#21D848',

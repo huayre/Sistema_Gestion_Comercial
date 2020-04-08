@@ -57,9 +57,9 @@ function IniciarModalCrear() {
             tabla.draw();
            
         },
-        error:function ($datos) {
+        error:function (datos) {
             $('#btn_crear_marca').html('Guardar');
-            $('#error_nombre_crear').html('<p class="text-danger">'+$datos.responseJSON.errors.nombre[0] + '</p>').show();
+            $('#error_nombre_crear').html('<p class="text-danger">'+datos.responseJSON.errors.nombre[0] + '</p>').show();
         }
     });
 });

@@ -4,7 +4,7 @@ namespace Modules\Almacen\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MarcaFormRequest extends FormRequest
+class MedidaFormRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,7 +14,7 @@ class MarcaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|unique:marcas,nombre'
+            'nombre'=>'required|unique:medidas,nombre'
         ];
     }
 
@@ -29,9 +29,9 @@ class MarcaFormRequest extends FormRequest
     }
 
     public function messages(){
-        return [
-            'nombre.required'=>'Ingrese el nombre de la marca',
-            'nombre.unique'=>'La marca ya existe..!!'
+        return[
+            'nombre.required'=>'Ingrese el nombre de la unidad de medida',
+            'nombre.unique'=>'La unidad de medida ya existe..!!'
         ];
     }
 }

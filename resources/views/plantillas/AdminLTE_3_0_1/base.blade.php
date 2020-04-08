@@ -271,8 +271,11 @@
 <script src="{{asset("paquetes/toast/jquery.toast.min.js")}}"></script>
 <!-- bootstrap-select -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="{{asset("js/principal.js")}}"></script>
 @yield('scripts')
+
 </div>
 @livewireScripts
 </body>
 </html>
+

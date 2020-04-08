@@ -16,7 +16,7 @@ class ClienteFormRequest extends FormRequest
         return [        
             'nombres'=>'required',
             'tipo_documento'=>'required',
-            'numero_documento'=>'required'
+            'numero_documento'=>'required|unique:clientes,numero_documento'
             
         ];
     }
@@ -36,7 +36,8 @@ class ClienteFormRequest extends FormRequest
         return[
             'nombres.required'=>'El nombre del cliente es obligatorio',
             'tipo_documento.required'=>'Selecciona un tipo de documento',
-            'numero_documento.required'=>'El número documento es obligatorio'
+            'numero_documento.required'=>'El número documento es obligatorio',
+            'numero_documento.unique'=>'El número de dni ya se  encuentra registrado'
             
         ];
         

@@ -14,3 +14,4 @@
 Route::resource('categoria','CategoriaController');
 Route::resource('marca','MarcaController');
 Route::resource('producto','ProductoController');
+Route::resource('medida','MedidaController');
