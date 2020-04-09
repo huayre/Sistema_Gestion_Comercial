@@ -7,7 +7,7 @@
     {{--Modal para crear una nuevo producto--}}
     @include('almacen::producto.modal_crear')
     
-    <h2 class="row justify-content-center text-primary">LISTADO DE PRODUCTOS</h2>
+    <h2 class=" text-primary text-center">LISTADO DE PRODUCTOS</h2>
     <h3>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearproducto" data-whatever="@mdo" onclick="LimpiarModal()">
             <i class="fas fa-plus-circle"></i> NUEVO PRODUCTO</button>

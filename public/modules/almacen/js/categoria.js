@@ -9,7 +9,7 @@ $(function () {
     var table= $('#tabla_categorias').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "http://localhost:8000/categoria",
+        ajax: "categoria",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'nombre', name: 'nombre'},
@@ -32,7 +32,7 @@ $(function () {
     });
 
 
-
+//CREAR UNA NUEVA CATEGORIA
 //funcion que permite limpiar un modal cuando se inicialice
  function LimpiarModal() {
    $('#formulario_categoria').trigger('reset');
@@ -47,21 +47,42 @@ $('#btn_categoria').click(function (e) {
 
     $.ajax({
         data: $('#formulario_categoria').serialize(),
-        url: "http://localhost:8000/categoria",
+        url: "categoria",
         type: "POST",
         dataType: 'json',
         success: function () {
             $('#modalcrearcategoria').modal('hide');
+            MensageSuccessEliminar();
             table.draw();
         },
-        error: function (data) {
+        error: function (datos) {            
             $('#btn_categoria').html('Guardar');
-            $('#error_nombre').html('<p class="text-danger">'+data.responseJSON.errors.nombre[0] + '</p>').show();
-            $('#error_descripcion').html('<p class="text-danger">'+data.responseJSON.errors.descripcion[0] + '</p>').show();
+            if(datos.responseJSON.hasOwnProperty('errors')){
+                if(datos.responseJSON.errors.nombre){
+                    $('#error_nombre').html('<p class="text-danger">'+datos.responseJSON.errors.nombre[0] + '</p>').show();
+                }
+                if(datos.responseJSON.errors.descripcion){
+                    $('#error_descripcion').html('<p class="text-danger">'+datos.responseJSON.errors.descripcion[0] + '</p>').show();
+                }
+            
+            }
         }
     });
 });
-
+//
+//Mensaje Success Eliminar
+function MensageSuccessEliminar(){
+    $.toast({
+        text: 'La Categoria fue Correctamente',
+        icon: 'success',
+        position:'top-right',
+        bgColor: '#21D848',
+        textColor: 'white',
+        loaderBg:'#E3F85B'
+    })
+  
+}
+//ELIMINAR
 var categoria_id;
 $(document).on('click', '.eliminar', function(){
         categoria_id=$(this).data("id");
@@ -77,7 +98,7 @@ $('#btn_eliminar').click(function(){
     $('#btn_eliminar').html('<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Eliminando...');
     $.ajax({
         type: "DELETE",
-        url:"http://localhost:8000/categoria/"+categoria_id,
+        url:"categoria/"+categoria_id,
         success:function(data){
         $('#modaleliminar').modal('hide');
         table.draw();
@@ -92,8 +113,7 @@ $('#btn_eliminar').click(function(){
 });
 
 
-function MensageSuccessEliminar(){
-    {  
+function MensageSuccessEliminar(){    {  
 
             $.toast({
                 text: 'La Categoría Fué Eliminado Correctamente',

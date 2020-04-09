@@ -10,13 +10,13 @@
     @include('almacen::categoria.modal_crear')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <h2 class="row justify-content-center text-primary">LISTADO DE CATEGORÍAS</h2>
+    <h2 class="row justify-content-center text-primary text-center">LISTADO DE CATEGORÍAS</h2>
     <h3>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearcategoria" data-whatever="@mdo" onclick="LimpiarModal()">
             <i class="fas fa-plus-circle"></i> NUEVA CATEGORÍA</button>
     </h3>
-  <div class="table-responsive">
-    <table class="table table-hover w-100" id="tabla_categorias" >
+  <div class="">
+    <table class="table table-responsive table-hover  w-100  " id="tabla_categorias" >
         <thead class="bg-primary">
         <tr>
             <th>N°</th>

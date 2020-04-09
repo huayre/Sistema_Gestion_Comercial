@@ -43,7 +43,7 @@ class CategoriaController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(CategoriaFormRequest $request)
+    public function store(CategoriaFormRequest  $request)
     {
         $this->CategoriaService->CrearCategoria($request);
         return response()->json(['success' => 'La categoría fue creado correctamente !!!']);

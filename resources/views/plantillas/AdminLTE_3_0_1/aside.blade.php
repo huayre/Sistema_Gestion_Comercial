@@ -199,9 +199,7 @@
                                     <p>Compras</p>
                                 </a>
                             </li> 
-                            <li>
-                                <button type="submit" class="btn btn-primary" id="marca">OK</button>
-                            </li>                         
+                                                    
                         </ul>
                     </li>
                    

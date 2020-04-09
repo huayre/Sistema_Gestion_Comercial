@@ -50,7 +50,7 @@ $('#btn_cliente').click(function(e){
 
  $.ajax({
   data:$('#formulario_cliente').serialize(),
-  url:"http://localhost:8000/cliente",
+  url:"cliente",
   type:"POST",
   dataType:'json',
   success:function(){
