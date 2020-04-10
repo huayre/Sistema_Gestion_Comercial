@@ -1,26 +1,20 @@
 <?php
 
-namespace Modules\Compras\Http\Controllers;
+namespace Modules\Otros\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Compras\Service\ProveedorService;
 
-class ProveedorController extends Controller
+class OtrosController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    private $ProveedorService;
-    public function __construct(ProveedorService $ProveedorService){
-        $this->ProveedorService=$ProveedorService;
-    }
     public function index()
-    { 
-        $ListaDepartamentos=$this->ProveedorService->ListaDepartamentos();
-        return view('compras::proveedor.index',compact('ListaDepartamentos'));
+    {
+        return view('otros::index');
     }
 
     /**
@@ -29,7 +23,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('compras::create');
+        return view('otros::create');
     }
 
     /**
@@ -49,7 +43,7 @@ class ProveedorController extends Controller
      */
     public function show($id)
     {
-        return view('compras::show');
+        return view('otros::show');
     }
 
     /**
@@ -59,7 +53,7 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        return view('compras::edit');
+        return view('otros::edit');
     }
 
     /**
@@ -81,15 +75,5 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getprovincias($id){
-        $ListaProvincias=$this->ProveedorService->BuscarProvincias($id);
-        return response()->json($ListaProvincias);
-    }
-
-    public function getdistritos($id){
-        $ListaDistritos=$this->ProveedorService->BuscarDistritos($id);
-        return response()->json($ListaDistritos);
     }
 }

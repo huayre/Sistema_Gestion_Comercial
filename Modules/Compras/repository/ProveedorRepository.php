@@ -1,10 +1,12 @@
 <?php
 
-
 namespace Modules\Compras\Repository;
 
 
 use Modules\Compras\Entities\Proveedor;
+use Modules\Compras\Entities\Departamento;
+use Modules\Compras\Entities\Provincia;
+use Modules\Compras\Entities\Distrito;
 
 class ProveedorRepository implements Base
 {
@@ -43,7 +45,22 @@ class ProveedorRepository implements Base
     }
 
     //Metodos Adicionales
-    public function CategoriasActivos(){
-        return $categoria=Categoria::where('estado','=','Activo')->get();
+
+    public function alldepartamentos(){
+        $ListaDepartamentos=Departamento::all();
+        return $ListaDepartamentos;
     }
+
+    public function FindProvincias($id){
+        
+        $ListaProvincias=Provincia::where('departamento_id',$id)->get();
+        return $ListaProvincias;
+    }
+
+    public function FindDistritos($id){
+        $ListaDistritos=Distrito::where('provincia_id',$id)->get();
+        return $ListaDistritos;
+    }
+
 }
+    

@@ -1,0 +1,13 @@
+{
+    "name": "Otros",
+    "alias": "otros",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Otros\\Providers\\OtrosServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

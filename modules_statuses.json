@@ -2,5 +2,6 @@
     "Almacen": true,
     "Compras": true,
     "Ventas": true,
-    "Acceso": true
+    "Acceso": true,
+    "Otros": true
 }
