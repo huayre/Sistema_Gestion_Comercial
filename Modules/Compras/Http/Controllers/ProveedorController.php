@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Compras\Service\ProveedorService;
+use Modules\Compras\Http\Requests\ProveedorFormRequest;
 
 class ProveedorController extends Controller
 {
@@ -17,10 +18,13 @@ class ProveedorController extends Controller
     public function __construct(ProveedorService $ProveedorService){
         $this->ProveedorService=$ProveedorService;
     }
-    public function index()
-    { 
+    public function index(Request $request)
+    {  
+        if($request->ajax()){
+            return $this->ProveedorService->TablaProveedores();
+        }
         $ListaDepartamentos=$this->ProveedorService->ListaDepartamentos();
-        return view('compras::proveedor.index',compact('ListaDepartamentos'));
+       return view('compras::proveedor.index',compact('ListaDepartamentos'));
     }
 
     /**
@@ -37,9 +41,10 @@ class ProveedorController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ProveedorFormRequest $request)
     {
-        //
+        $this->ProveedorService->CrearProveedor($request);
+        return response()->json(['success'=>'El proveedor fue registrado correctamente..!!']);
     }
 
     /**

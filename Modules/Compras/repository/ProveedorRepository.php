@@ -21,7 +21,7 @@ class ProveedorRepository implements Base
     public function create($data)
     {
         // TODO: Implement create() method.
-        $Categoria=new Categoria();
+        $Categoria=new Proveedor();
         $Categoria->create($data->all());
     }
 

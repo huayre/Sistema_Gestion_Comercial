@@ -23,6 +23,6 @@
         }
     },
     "require": {
-        "livewire/livewire": "^1.0"
+        "yajra/laravel-datatables-oracle": "^9.6"
     }
 }

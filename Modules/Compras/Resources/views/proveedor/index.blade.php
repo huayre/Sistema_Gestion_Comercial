@@ -15,14 +15,17 @@
     <table class="table table-hover w-100" id="tabla_proveedores" >
         <thead class="bg-primary">
         <tr>
-            <th>N°</th>
+            <th>N°</th>            
             <th>Nombre</th>
-            <th>Tipo Documento</th>
-            <th>Número documento</th>
-            <th>Dirección</th>
-            <th>Telefono</th>
+            <th>Tipo de documento</th>
+            <th>Número de documento</th>
+            <th>Departamento</th>
+            <th>Provincia</th>
+            <th>Distrito</th>           
+            <th>Celular</th>
             <th>Email</th>
-            <th width="280px">Opciones</th>
+            <th width="600px">Opciones</th>
+            
         </tr>
         </thead>
         <tbody>

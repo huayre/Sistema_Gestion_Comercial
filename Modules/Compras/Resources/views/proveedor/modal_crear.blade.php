@@ -15,7 +15,8 @@
 
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
                             <label class="col-form-label">Tipo documento <span class="text-danger"> (*)</span></label>
-                            <select name="tipo_documento" class="form-control selectpicker" data-live-search="true">
+                            <select name="tipo_documento" class="form-control">
+                              <option value="">Seleccionar</option>
                               <option value="dni">DNI</option>
                               <option value="ruc">RUC</option>
                             </select>
@@ -33,52 +34,53 @@
 
                     <div class="row">
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
-                                <label class="col-form-label">Nombre de la Empresa<span class="text-danger"> (*)</span></label>
-                                <input type="text" class="form-control"  name="nombres"  placeholder="Ingrese el nombre del cliente">
-                                <div id="error_nombres"></div>
+                                <label class="col-form-label">Nombre de la Empresa o Persona<span class="text-danger"> (*)</span></label>
+                                <input type="text" class="form-control"  name="nombre_empresa"  placeholder="Ingrese el nombre de la empresa o persona">
+                                <div id="error_nombre_empresa"></div>
                             
                         </div>
 
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
                             <label class="col-form-label">Departamento<span class="text-danger">(*)</span></label>
-                            <select name="" id="departamento" class="form-control selectpicker" data-live-search="true">
-                                @foreach($ListaDepartamentos as $depa)
+                            <select name="ubicacion_departamento" id="departamento" class="form-control">
+                                <option value="">Seleccionar</option>
+                                @foreach($ListaDepartamentos as $depa)                                   
                                     <option value="{{$depa->id}}">{{$depa->nombre}}</option>
                                 @endforeach
                             </select>
-                            <div id="error_direccion"></div>
+                            <div id="error_ubicacion_departamento"></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
                             <label class="col-form-label">Provincia<span class="text-danger">(*)</span></label>
-                            <select name="" id="provincia" class="form-control ">                      
+                            <select name="ubicacion_provincia" id="provincia" class="form-control ">                      
                                  {{--aqui se agrega las opciones con Jquery Lista de  provincias--}}                                
                             </select>
-                            <div id="error_direccion"></div>
+                            <div id="error_ubicacion_provincia"></div>
                         </div>
 
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
                             <label class="col-form-label">Distrito <span class="text-danger">(*)</span></label>
-                            <select name="" id="distrito" class="form-control">
+                            <select name="ubicacion_distrito" id="distrito" class="form-control">
                             {{--aqui se agrega las opciones con Jquery Lista de  distritos--}}   
                             </select>
-                            <div id="error_direccion"></div>
+                            <div id="error_ubicacion_distrito"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <label class="col-form-label">Ubicación</label>
-                                    <input type="text" class="form-control"  name="telefono"  placeholder="Ingrese el número de celular ">
-                                    <div id="error_telefono"></div>
+                                <label class="col-form-label">Ubicación</label>
+                                <input type="text" class="form-control"  name="direccion"  placeholder="Ingrese la direccion de la empresa o persona">
+                                <div id="error_direccion"></div>
                                 
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
-                                <label class="col-form-label">Celular</label>
+                                <label class="col-form-label">Celular de la emprea o Persona</label>
                                 <input type="text" class="form-control"  name="telefono"  placeholder="Ingrese el número de celular ">
                                 <div id="error_telefono"></div>
                             

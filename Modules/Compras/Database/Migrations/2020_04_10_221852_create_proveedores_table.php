@@ -17,8 +17,11 @@ class CreateProveedoresTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_empresa');
             $table->string('direccion')->nullable($value=true);
-            $table->string('tipo_documento')->nullable($value=true);
-            $table->string('numero_documento')->nullable($value=true);
+            $table->string('ubicacion_departamento');
+            $table->string('ubicacion_provincia');
+            $table->string('ubicacion_distrito');
+            $table->string('tipo_documento');
+            $table->string('numero_documento');
             $table->string('telefono')->nullable($value=true);
             $table->string('email')->nullable($value=true);
             $table->timestamps();
