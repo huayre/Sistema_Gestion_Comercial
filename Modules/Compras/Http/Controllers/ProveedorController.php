@@ -64,7 +64,8 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        return view('compras::edit');
+        $ProveedorEncontrado=$this->ProveedorService->BuscarProveedor($id);
+        return response()->json($ProveedorEncontrado);
     }
 
     /**
@@ -73,9 +74,10 @@ class ProveedorController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(ProveedorFormRequest $request, $id)
     {
-        //
+        $this->ProveedorService->EditarProveedor($request,$id);
+        return response()->json(['success'=>'El proveedor fue eliminado correctamente..!!']);
     }
 
     /**
@@ -85,7 +87,8 @@ class ProveedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->ProveedorService->EliminarProveedor($id);
+        return response()->json(['success'=>'El proveedor fue eliminado correctamente..!!']);
     }
 
     public function getprovincias($id){

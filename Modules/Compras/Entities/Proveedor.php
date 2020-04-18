@@ -19,4 +19,15 @@ class Proveedor extends Model
         'ubicacion_provincia',
         'ubicacion_distrito'
     ];
+
+    //funciones para las reaciones de las tablas
+    public function Departamento(){        
+        return $this->belongsTo(Departamento::class,'ubicacion_departamento');        
+    }
+    public function Provincia(){        
+        return $this->belongsTo(Provincia::class);        
+    }
+    public function Distrito(){        
+        return $this->belongsTo(Distrito::class);        
+    }
 }

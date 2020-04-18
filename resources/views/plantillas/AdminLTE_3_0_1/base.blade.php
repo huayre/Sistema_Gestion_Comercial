@@ -201,10 +201,12 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <!-- /.container-fluid -->
-                <div class="card ">
-                    <div class="card-body">
-                        @yield('contenido')
-                    </div>
+                <div class="card">
+                   <div class="card-body">
+                   @yield('contenido')
+                   </div>
+                    
+                    
                 </div>
 
             </div>

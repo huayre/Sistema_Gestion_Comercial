@@ -21,27 +21,28 @@ class ProveedorRepository implements Base
     public function create($data)
     {
         // TODO: Implement create() method.
-        $Categoria=new Proveedor();
-        $Categoria->create($data->all());
+        $departamento=new Proveedor();
+        $departamento->create($data->all());
     }
 
     public function update($data, $id)
     {
         // TODO: Implement update() method.
-
-       $categoria=Categoria::find($id);
-       $categoria->update($data->all());
+       $departamento=Departamento::find($id);
+       $departamento->update($data->all());
     }
 
     public function delete($id)
     {
-        $categoria=Categoria::find($id);
-        $categoria->delete();
+        $proveedor=Proveedor::find($id);
+        $proveedor->delete();
     }
 
     public function find($id)
     {
         // TODO: Implement find() method.
+        $Proveedor=Proveedor::find($id);
+        return $Proveedor;
     }
 
     //Metodos Adicionales

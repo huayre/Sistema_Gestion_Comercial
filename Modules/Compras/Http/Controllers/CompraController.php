@@ -5,16 +5,22 @@ namespace Modules\Compras\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Compras\Service\CompraService;
 
-class ComprasController extends Controller
+class CompraController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
+    private $CompraService;
+
+    public function __construct(CompraService $CompraService){
+        $this->CompraService=$CompraService;
+    }
     public function index()
     {
-        return view('compras::proveedor.index');
+        return  view('compras::compra.index');
     }
 
     /**
@@ -22,8 +28,10 @@ class ComprasController extends Controller
      * @return Response
      */
     public function create()
-    {
-        return view('compras::create');
+    { 
+        $ListaProveedor=$this->CompraService->ListaProveedor();
+        $ListaProductos=$this->CompraService->ListaProductos();
+        return view('compras::compra.nueva_compra',compact('ListaProveedor','ListaProductos'));
     }
 
     /**
@@ -33,7 +41,8 @@ class ComprasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$this->CompraService->CrearNuevaCompra($datos);
+        dd($request->item_producto);
     }
 
     /**
@@ -43,7 +52,8 @@ class ComprasController extends Controller
      */
     public function show($id)
     {
-        return view('compras::show');
+       // return view('compras::show');
+       dd($id);
     }
 
     /**

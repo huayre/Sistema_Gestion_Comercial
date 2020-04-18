@@ -98,7 +98,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('categoria.index')}}" class="nav-link">
+                                <a href="{{route('compra.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon text-primary"></i>
                                     <p>Compras</p>
                                 </a>

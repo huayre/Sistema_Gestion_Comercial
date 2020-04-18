@@ -33,15 +33,28 @@ class ProveedorService
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar"><i class="fa fa-edit"></i>Editar</a>';
+                $btn = '<a  href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar "><i class="fa fa-edit"></i>Editar</a>';
 
-                $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm eliminar"><i class="fa fa-trash"></i> Eliminar</a>';
+                $btn =$btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm eliminar "><i class="fa fa-trash"></i> Eliminar</a>';
 
-                return $btn;
+                return '<div class="d-flex justify-content-around" style="width:170px">'.$btn.'</div>';
             })
-            ->rawColumns(['action'])
+            ->addColumn('departamento', function ($row) {
+                return $row->Departamento->nombre;
+            })
+            ->rawColumns(['action','departamento'])
             ->make(true);
     }
 
+    public function EliminarProveedor($id){
+        return $this->ProveedorRepository->delete($id);
+    }
 
+    public function BuscarProveedor($id){
+        return $this->ProveedorRepository->find($id);
+    }
+
+    public function EditarProveedor($data,$id){
+        $this->ProveedorRepository->update($data,$id);
+    }
 }
