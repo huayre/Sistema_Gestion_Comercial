@@ -4,9 +4,9 @@ namespace Modules\Compras\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Detalle_Compra extends Model
+class DetalleCompra extends Model
 {   
-    protected $table='detalle_compra';
+    protected $table='detalle_compras';
     protected $fillable = [
         'compra_id',
         'producto_id',

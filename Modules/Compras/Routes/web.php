@@ -4,4 +4,4 @@ Route::get('provincia/{id}/buscar', 'ProveedorController@getprovincias');
 Route::get('distrito/{id}/buscar','ProveedorController@getdistritos');
 
 
-Route::resource('compra', 'CompraController');
+Route::resource('compra','CompraController');

@@ -40,9 +40,10 @@ class CompraController extends Controller
      * @return Response
      */
     public function store(Request $request)
-    {
-        //$this->CompraService->CrearNuevaCompra($datos);
-        dd($request->item_producto);
+    {        
+        $this->CompraService->CrearNuevaCompra($request);
+                 
+      
     }
 
     /**

@@ -1,7 +1,6 @@
 @extends('plantillas.AdminLTE_3_0_1.base')
 @section('contenido')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-   
+       
     <h2 class="row justify-content-center text-primary text-center">LISTA DE PROVEEDORES</h2>
     
     <h3>
@@ -33,6 +32,3 @@
     </table>
   </div>
 @endsection
-{{-- @section('scripts')
-<script src="{{asset("modules/compras/js/compra.js")}}"></script>
-@endsection --}}
