@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Compras\Service\CompraService;
+use Modules\Compras\Http\Requests\CompraFormRequest;
 
 class CompraController extends Controller
 {
@@ -41,8 +42,9 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {        
-        $this->CompraService->CrearNuevaCompra($request);
-                 
+       $this->CompraService->CrearNuevaCompra($request);
+       
+                
       
     }
 

@@ -12,12 +12,13 @@ class CompraRepository{
         return $ListaProductos;
     }
      //Metodo que nos permite sacar el precio de compra
-    public function PrecioTotalCompra($detalle_compra){
+    public function PrecioTotalCompra($ArrayCantidadCompraProducto,$ArrayPrecioProductoUnidad){
         $PrecioCompraTotal=0;
-        foreach ($detalle_compra as $key => $value) {
-            $value=(object)$detalle_compra[$key];
-            $PrecioCompraTotal=$PrecioCompraTotal+($value->cantidad_compra_producto*$value->precio_producto_unidad);
-        }
+        $contador=0;
+            while($contador<count($ArrayCantidadCompraProducto)){
+                $PrecioCompraTotal=$PrecioCompraTotal+($ArrayCantidadCompraProducto[$contador]*$ArrayPrecioProductoUnidad[$contador]);
+                $contador++;
+            }
         return $PrecioCompraTotal;
     }
  
@@ -45,6 +46,11 @@ class CompraRepository{
             'cantidad_compra'=>$cantidad_compra,
             'precio_compra'=>$precio_compra
         ]);
+    }
+
+    public function ActualizarStockDisminuir($IdProducto,$CantidadProductoComprado){
+        $Producto=Producto::find($IdProducto);
+        $Producto->increment('stock',$CantidadProductoComprado);
     }
 
     

@@ -4,7 +4,7 @@ namespace Modules\Compras\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FormRequestCompra extends FormRequest
+class CompraFormRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

@@ -54,7 +54,7 @@
                     DATOS
                 </div>
                 <div class="card-body">
-                    <form id="formulario_datos_generales_compra">
+                   
                         <div class="form-group">
                             <label for="">Tipo de Comprobante</label>
                             <select name="tipo_comprobante"  class="form-control" id="tipo_comprobante">
@@ -93,11 +93,13 @@
                             </div>
                             
                         </div>
-                        <button  id="btn_registrar_compra" class="btn btn-primary btn-lg btn-block"><i class="far fa-file-alt"></i> REGISTRAR COMPRA</button>
-                    </form>
+                        
+                    
 
                 </div>
             </div>
+
+            <button  id="btn_registrar_compra" class="btn btn-primary btn-lg btn-block"><i class="far fa-file-alt"></i> REGISTRAR COMPRA</button>
             
         </div>      
     </div>

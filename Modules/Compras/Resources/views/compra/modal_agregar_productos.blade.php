@@ -13,8 +13,8 @@
                          <div class="row">
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
                                 <label class="col-form-label">Producto<span class="text-danger">(*)</span></label>
-                                <select name="item_producto"  class="form-control selectpicker" id="item_producto" data-live-search="true"  data-size="5">                                    
-                                    <option value="">Seleccionar</option>
+                                <select name="item_producto"  class="form-control selectpicker" id="item_producto" data-live-search="true"  data-size="5"> 
+                                        <option>Seleccionar</option> 
                                     @foreach($ListaProductos as $pro)                                   
                                         <option value="{{$pro->id}}">{{$pro->nombre}}</option>
                                     @endforeach
