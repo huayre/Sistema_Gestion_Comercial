@@ -14,7 +14,12 @@ class CompraFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'tipo_comprobante'=>'required',
+            'serie_comprobante'=>'required',
+            'numero_comprobante'=>'required',
+            'fecha_compra'=>'required',
+            'proveedor_id'=>'required',
+
         ];
     }
 
@@ -24,7 +29,17 @@ class CompraFormRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {
+    {  
         return true;
+    }
+
+    public function messages(){
+        return [
+            'tipo_comprobante.required'=>'ingrese el tipo de comprobante',
+            'serie_comprobante.required'=>'ingrese la serie del comprobante',
+            'numero_comprobante.required'=>'ingrese el número del comprobante',
+            'fecha_compra.required'=>'ingrese la fecha de la compra',
+            'proveedor_id.required'=>'ingrese el proveedor de la compra',
+        ];
     }
 }

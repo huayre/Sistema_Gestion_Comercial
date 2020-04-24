@@ -10,18 +10,16 @@
     </h3>
     
   <div class="table-responsive">
-    <table class="table table-hover w-100 " id="tabla_proveedores" >
+    <table class="table table-hover w-100" id="tabla_compras" >
         <thead class="bg-primary">
         <tr>
             <th>N°</th>            
-            <th>Nombre</th>
-            <th>Tipo de documento</th>
-            <th>Número de documento</th>
-            <th>Departamento</th>
-            <th>Provincia</th>
-            <th>Distrito</th>           
-            <th>Celular</th>
-            <th>Email</th>
+            <th>Tipo Comprobante</th>
+            <th>Número documento</th>
+            <th>Fecha Compra</th>
+            <th>Précio Compra</th>
+            <th>Detalle Compra</th>
+            <th>Proveedor</th>
             <th>Opciones</th>
             
         </tr>
@@ -31,4 +29,7 @@
         </tbody>
     </table>
   </div>
+@endsection
+@section('scripts')
+<script src="{{asset("modules/compras/js/compra_index.js")}}"></script>
 @endsection

@@ -12,6 +12,14 @@ function OcultarMensajesErrorModal(){
     $('#error_item_cantidad').hide();
     $('#error_item_precio').hide();
 }
+
+function OcultarMensajesErrorCompraDatosGenerales(){
+    $('#error_tipo_comprobante').hide()
+    $('#error_serie_comprobante').hide();
+    $('#error_numero_comprobante').hide();
+    $('#error_fecha_compra').hide();
+    $('#error_proveedor_id').hide();
+}
 function IniciarModal(){
      OcultarMensajesErrorModal();
     //reseteamos imput del modal
@@ -93,34 +101,64 @@ function EliminarItemLista(contador){
 //para crear una compra enviamos los datos generales de la compra mediante un formulario extraerdo sus datos con serialize
 //para agregar los detalles de la venta se envia un array que contiene el [id_producto,nombre_producto,precio_producto_unidad]
 $('#btn_registrar_compra').click(function(e){
- e.preventDefault();
- $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
- var ArrayIdProducto = $("input[name='ArrayIdProducto[]']").map(function(){return $(this).val();}).get();
- var ArrayCantidadCompraProducto = $("input[name='ArrayCantidadCompraProducto[]']").map(function(){return $(this).val();}).get();
- var ArrayPrecioProductoUnidad=$("input[name='ArrayPrecioProductoUnidad[]']").map(function(){return $(this).val();}).get();
- var datos = {
-   'ArrayIdProducto':ArrayIdProducto,
-   'ArrayCantidadCompraProducto':ArrayCantidadCompraProducto,
-   'ArrayPrecioProductoUnidad':ArrayPrecioProductoUnidad,
-   'tipo_comprobante':$('#tipo_comprobante').val(),
-   'serie_comprobante':$('#serie_comprobante').val(),
-   'numero_comprobante':$('#numero_comprobante').val(),
-   'fecha_compra':$('#fecha_compra').val(),
-   'proveedor_id':$('#proveedor_id').val()
- }
+    OcultarMensajesErrorCompraDatosGenerales();
+    e.preventDefault();
+    $(this).html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n'+'Creando...');
+    var ArrayIdProducto = $("input[name='ArrayIdProducto[]']").map(function(){return $(this).val();}).get();
+    var ArrayCantidadCompraProducto = $("input[name='ArrayCantidadCompraProducto[]']").map(function(){return $(this).val();}).get();
+    var ArrayPrecioProductoUnidad=$("input[name='ArrayPrecioProductoUnidad[]']").map(function(){return $(this).val();}).get();
+    var datos = {
+    'ArrayIdProducto':ArrayIdProducto,
+    'ArrayCantidadCompraProducto':ArrayCantidadCompraProducto,
+    'ArrayPrecioProductoUnidad':ArrayPrecioProductoUnidad,
+    'tipo_comprobante':$('#tipo_comprobante').val(),
+    'serie_comprobante':$('#serie_comprobante').val(),
+    'numero_comprobante':$('#numero_comprobante').val(),
+    'fecha_compra':$('#fecha_compra').val(),
+    'proveedor_id':$('#proveedor_id').val()
+    }
 
- $.ajax({
-  data:datos, 
-  url:url_global+'/compra',
-  type:"POST",
-  dataType:'json',
-  success:function(result){
-     
-  },
-  error:function(datos){     
-    
-    
-  }
+    $.ajax({
+        data:datos, 
+        url:url_global+'/compra',
+        type:"POST",
+        dataType:'json',
+        success:function(result){
+            MensageSuccessCrear();
+            $('#btn_registrar_compra').html('<i class="far fa-file-alt"></i> REGISTRAR COMPRA');
+        },
+        error:function(datos){     
+            $('#btn_registrar_compra').html('<i class="far fa-file-alt"></i> REGISTRAR COMPRA');
+            if(datos.responseJSON.hasOwnProperty('errors')){
+                if(datos.responseJSON.errors.tipo_comprobante){
+                    $('#error_tipo_comprobante').html('<p class="text-danger">'+datos.responseJSON.errors.tipo_comprobante[0] + '</p>').show();
+                }
+                if(datos.responseJSON.errors.serie_comprobante){
+                    $('#error_serie_comprobante').html('<p class="text-danger">'+datos.responseJSON.errors.serie_comprobante[0] + '</p>').show(); 
+                }
+                if(datos.responseJSON.errors.numero_comprobante){
+                    $('#error_numero_comprobante').html('<p class="text-danger">'+datos.responseJSON.errors.numero_comprobante[0] + '</p>').show();
+                }
+                if(datos.responseJSON.errors.fecha_compra){
+                    $('#error_fecha_compra').html('<p class="text-danger">'+datos.responseJSON.errors.fecha_compra[0] + '</p>').show();
+                }
+                if(datos.responseJSON.errors.proveedor_id){
+                    $('#error_proveedor_id').html('<p class="text-danger">'+datos.responseJSON.errors.proveedor_id[0] + '</p>').show();
+                }
+            }
+        }
 
- });
+    });
 });
+
+//mensaje success crear una compra
+function MensageSuccessCrear(){
+    $.toast({
+        text: 'La Compra Fué Creado Correctamente',
+        icon: 'success',
+        position:'top-right',
+        bgColor: '#21D848',
+        textColor: 'white',
+        loaderBg:'#E3F85B'
+    })  
+}

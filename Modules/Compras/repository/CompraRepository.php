@@ -7,6 +7,10 @@ use Modules\Compras\Entities\DetalleCompra;
 
 class CompraRepository{
     
+    public function ListaCompras(){
+        $ListaCompras=Compra::all();
+        return $ListaCompras;
+    }
     public function ListaProductos(){
         $ListaProductos=Producto::all();
         return $ListaProductos;

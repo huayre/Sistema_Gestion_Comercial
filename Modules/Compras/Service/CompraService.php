@@ -2,6 +2,7 @@
 namespace Modules\Compras\Service;
 use Modules\Compras\Repository\ProveedorRepository;
 use Modules\Compras\Repository\CompraRepository;
+use DataTables;
 
 class CompraService{
     private $ProveedorRepository;
@@ -16,6 +17,27 @@ class CompraService{
     }
     public function ListaProductos(){
         return $this->CompraRepository->ListaProductos();
+    }
+
+    public function TablaCompras(){
+        $data = $this->CompraRepository->ListaCompras();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a  href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar "><i class="fa fa-edit"></i>Editar</a>';
+
+                $btn =$btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm eliminar "><i class="fa fa-trash"></i> Eliminar</a>';
+
+                
+                return '<div class="d-flex justify-content-around" style="width:170px">'.$btn.'</div>';
+            })
+            ->addColumn('detalle_compra', function ($row) {
+               $detalle= '<a  href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar "><i class="fa fa-edit"></i>Detalle</a>';
+               return $detalle;
+            })           
+            ->rawColumns(['action','departamento','detalle_compra'])
+            ->make(true);
     }
 
     public function CrearNuevaCompra($datos){

@@ -62,21 +62,25 @@
                                 <option value="FACTURA">FACTURA</option>
                                 
                             </select>
+                            <div id="error_tipo_comprobante"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="">Serie de Comprobante</label>
                             <input type="text" name="serie_comprobante"  class="form-control" placeholder="Ingrese la Serie del documento" id="serie_comprobante">
+                            <div id="error_serie_comprobante"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="">Número de Comprobante</label>
                             <input type="text" name="numero_comprobante"  class="form-control" placeholder="Ingrese el Número del documento" id="numero_comprobante">
+                                <div id="error_numero_comprobante"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="">Fecha de Compra</label>
                             <input type="date" name="fecha_compra"  class="form-control" placeholder="Ingrese el Número del documento" id="fecha_compra">
+                            <div id="error_fecha_compra"></div>
                         </div>
 
                         <div class="form-group">
@@ -91,7 +95,7 @@
                                     <button class="btn btn-success" type="button"><i class="fas fa-plus-circle"></i></button>
                                 </div>
                             </div>
-                            
+                               <div id="error_proveedor_id"></div> 
                         </div>
                         
                     
@@ -103,11 +107,12 @@
             
         </div>      
     </div>
+    
     <script>
         var url_global='{{url("/")}}';
         //var store = <?php echo json_encode(route('compra.store')) ?>;
     </script>
 @endsection
 @section('scripts')
-<script src="{{asset("modules/compras/js/compra.js")}}"></script>
+<script src="{{asset("modules/compras/js/nueva_compra.js")}}"></script>
 @endsection

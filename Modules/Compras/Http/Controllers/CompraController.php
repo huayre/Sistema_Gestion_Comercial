@@ -19,8 +19,11 @@ class CompraController extends Controller
     public function __construct(CompraService $CompraService){
         $this->CompraService=$CompraService;
     }
-    public function index()
-    {
+    public function index(Request $request)
+    {    
+        if($request->ajax()){
+            return $this->CompraService->TablaCompras();
+        }
         return  view('compras::compra.index');
     }
 
@@ -40,10 +43,11 @@ class CompraController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CompraFormRequest $request)
     {        
        $this->CompraService->CrearNuevaCompra($request);
-       
+
+       return response()->json(['success'=>'La compra fue registrada correctamente']);      
                 
       
     }

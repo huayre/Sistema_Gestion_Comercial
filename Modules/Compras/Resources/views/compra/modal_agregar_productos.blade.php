@@ -10,6 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
+               
                          <div class="row">
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg col-xl">
                                 <label class="col-form-label">Producto<span class="text-danger">(*)</span></label>
@@ -35,11 +36,12 @@
                                 <div id="error_item_precio"></div>
                               </div>
                         </div>
-                  
+                
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" id="btn_agregar_item_producto">Agregar A la Lista</button>
+                        <button type="submit" class="btn btn-primary" id="btn_agregar_item_producto">Agregar A la Lista</button>
                     </div>
+                
             </div>
         </div>
     </div>
