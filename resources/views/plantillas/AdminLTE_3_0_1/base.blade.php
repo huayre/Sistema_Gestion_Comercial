@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AdminLTE 3 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset("plantillas/$theme/plugins/fontawesome-free/css/all.min.css")}}">
     <!-- Ionicons -->
@@ -36,8 +35,10 @@
     @livewireStyles
     <!-- bootstrap-select -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
-
+        {{-- agregamos nuestros propios esilos  --}}
+    <link rel="stylesheet" href="{{asset("css/estilos_app/style.css")}}">
 </head>
+{{-- fixed-top --}}
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <style></style>
@@ -275,6 +276,8 @@
 <!-- bootstrap-select -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
+
+<script src="{{asset("js/principal.js")}}"></script>
 @yield('scripts')
 
 </div>

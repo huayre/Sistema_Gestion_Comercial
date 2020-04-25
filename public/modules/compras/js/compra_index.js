@@ -9,12 +9,12 @@ $('#tabla_compras').DataTable({
         {data: 'fecha_compra', name: 'fecha_compra'},
         {data: 'precio_compra', name: 'precio_compra'},        
         {data: 'detalle_compra', name: 'detalle_compra'},        
-        {data: 'proveedor_id', name: 'proveedor_id'},        
+        {data: 'proveedor', name: 'proveedor'},        
         {data: 'action', name: 'action', orderable: false, searchable: false},
     ],
 
     language: {
-        search: '<span>Buscar:</span> _INPUT_',
+        search: '<span class="text-info"><i class="fas fa-search"></i></span> _INPUT_',
         lengthMenu: '<span>Ver:</span> _MENU_',
         emptyTable: "No existen registros",
         sZeroRecords:    "No se encontraron resultados",
@@ -22,22 +22,23 @@ $('#tabla_compras').DataTable({
         sInfoFiltered:   "(filtrado de un total de _MAX_ registros)",
         sInfo:           "Mostrando del registro _START_ al _END_ de un total de _TOTAL_ datos",
         paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' },
-        processing: "Cargando..."
+        processing: '<div class="spinner-border " style="color:#0000FF" role="status"><span class="sr-only"></span></div>'
     },
-    columnDefs:
-        {"className": "dt-center", "targets": "_all"},
-    
     rowCallback:function(row,data){      
       if(data[0]!=""){
         $valor=$($(row).find("td")[0]).html();
         $($(row).find("td")[0]).text('');
-        $($(row).find("td")[0]).append('<span class="badge badge-pill badge-dark">'+$valor+'</span>');        
+        $($(row).find("td")[0]).append('<span class="badge badge-pill badge-info">'+$valor+'</span>');        
       }
       if(data[4]!=""){
           $($(row).find("td")[4]).addClass("table-info");
           
       }
+      if(data[5]!=""){
+        $($(row).find("td")[5]).addClass("table-warning");
+        
     }
-
+    }
+    
     
 });

@@ -38,7 +38,6 @@ class ProductoService
             ->addColumn('marca',function ($data){
                 return $data->marca->nombre;
             })
-
             ->rawColumns(['action'])
             ->make(true);
     }

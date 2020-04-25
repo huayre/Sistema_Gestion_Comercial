@@ -19,7 +19,7 @@ var tabla=$('#tabla_marcas').DataTable({
     ],
 
     language: {
-        search: '<span>Buscar:</span> _INPUT_',
+        search: '<span class="text-info"><i class="fas fa-search"></i></span>_INPUT_',
         lengthMenu: '<span>Ver:</span> _MENU_',
         emptyTable: "No existen registros",
         sZeroRecords:    "No se encontraron resultados",
@@ -27,9 +27,19 @@ var tabla=$('#tabla_marcas').DataTable({
         sInfoFiltered:   "(filtrado de un total de _MAX_ registros)",
         sInfo:           "Mostrando del registro _START_ al _END_ de un total de _TOTAL_ datos",
         paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' },
-        processing: "Cargando..."
+        processing: '<div class="spinner-border text-info" role="status"><span class="sr-only"></span></div>'
     },
-
+    rowCallback:function(row,data){      
+        if(data[0]!=""){
+            $valor=$($(row).find("td")[0]).html();
+            $($(row).find("td")[0]).text('');
+            $($(row).find("td")[0]).append('<span class="badge badge-pill badge-info">'+$valor+'</span>');        
+          }
+          if(data[1]!=""){
+              $($(row).find("td")[1]).addClass('table-warning');
+          }
+        
+    }
 });
 
 

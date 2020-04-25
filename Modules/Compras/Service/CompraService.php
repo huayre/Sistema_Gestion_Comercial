@@ -31,12 +31,17 @@ class CompraService{
 
                 
                 return '<div class="d-flex justify-content-around" style="width:170px">'.$btn.'</div>';
-            })
-            ->addColumn('detalle_compra', function ($row) {
-               $detalle= '<a  href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar "><i class="fa fa-edit"></i>Detalle</a>';
-               return $detalle;
-            })           
-            ->rawColumns(['action','departamento','detalle_compra'])
+            }) 
+            ->addColumn('proveedor', function ($data) {
+                return $data->Proveedor->nombre_empresa;
+             }) 
+             ->addColumn('precio_compra', function ($data) {
+                return 'S/. '.$data->precio_compra;
+             }) 
+             ->addColumn('detalle_compra', function ($row) {
+                return '<a href="'.route('compra.show',$row->id).'" class="d-flex justify-content-around"><i class="fas fa-2x fa-file-invoice-dollar" style="color:#45B39D"></i></a>';
+             })         
+            ->rawColumns(['action','departamento','detalle_compra','detalle_compra'])
             ->make(true);
     }
 
@@ -68,5 +73,14 @@ class CompraService{
         
         
     }
+    public function BuscarCompra($id){
+        return $this->CompraRepository->BuscarCompra($id);
+    }
+    public function BuscarDetalleCompra($id){
+        return $this->CompraRepository->BuscarDetalleCompra($id);
+    }
+
+    
+    
 
 }

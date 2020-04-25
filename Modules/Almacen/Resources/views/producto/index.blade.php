@@ -18,6 +18,7 @@
         <tr>
             <th>N°</th>
             <th>Nombre</th>
+            <th>Cantidad</th>
             <th>Marca</th>
             <th>Categoría</th>
             <th>Precio</th>

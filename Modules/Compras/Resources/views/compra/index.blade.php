@@ -1,6 +1,6 @@
 @extends('plantillas.AdminLTE_3_0_1.base')
 @section('contenido')
-       
+  
     <h2 class="row justify-content-center text-primary text-center">LISTA DE PROVEEDORES</h2>
     
     <h3>

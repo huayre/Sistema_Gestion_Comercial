@@ -56,6 +56,17 @@ class CompraRepository{
         $Producto=Producto::find($IdProducto);
         $Producto->increment('stock',$CantidadProductoComprado);
     }
+    public function BuscarCompra($id){
+        $compra=Compra::find($id);
+        return $compra; 
+    }
+
+    public function BuscarDetalleCompra($id){
+        $DetalleCompra=DetalleCompra::where('compra_id',$id)->get();
+        return $DetalleCompra; 
+    }
+
+    
 
     
 }

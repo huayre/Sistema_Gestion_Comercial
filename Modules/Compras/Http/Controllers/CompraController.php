@@ -58,9 +58,11 @@ class CompraController extends Controller
      * @return Response
      */
     public function show($id)
-    {
-       // return view('compras::show');
-       dd($id);
+    { 
+        $compra=$this->CompraService->BuscarCompra($id);
+        $DetalleCompra=$this->CompraService->BuscarDetalleCompra($compra->id);
+        return view('compras::compra.detalle_compra',compact('compra','DetalleCompra'));
+       
     }
 
     /**

@@ -69,7 +69,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('marca.index')}}" class="nav-link">
+                                <a href="{{route('marca.index')}}" class="nav-link" id="ruta_marca">
                                     <i class="far fa-circle nav-icon text-primary"></i>
                                     <p>Marcas</p>
                                 </a>

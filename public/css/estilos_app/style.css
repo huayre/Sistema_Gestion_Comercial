@@ -1,0 +1,8 @@
+/* estilo que permite modificar el tamaño del search de tatatables */
+  div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: 400px;
+  }
+ 
+       
