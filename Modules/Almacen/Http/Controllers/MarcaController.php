@@ -23,7 +23,8 @@ class MarcaController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-        return $this->MarcaService->TablaMarcas();
+         return $this->MarcaService->TablaMarcas();
+        
         }
 
         return view('almacen::marca.index');

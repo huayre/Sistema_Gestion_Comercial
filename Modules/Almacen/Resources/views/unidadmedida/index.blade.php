@@ -22,7 +22,7 @@
                 <th>N°</th>
                 <th>Nombre</th>
                 <th>Fecha de Registro</th>
-                <th width="280px">Opciones</th>
+                <th width="280px" class="text-center">Opciones</th>
             </tr>
             </thead>
             <tbody>

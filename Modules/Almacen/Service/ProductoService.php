@@ -30,7 +30,7 @@ class ProductoService
 
                 $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm eliminar"><i class="fa fa-trash"></i> Eliminar</a>';
 
-                return $btn;
+                return '<div style="width:170px">'.$btn.'</div>';
             })
             ->addColumn('categoria',function($data){
                 return $data->categoria->nombre;

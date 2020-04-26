@@ -13,21 +13,35 @@ $(function () {
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'nombre', name: 'nombre'},
-            {data: 'descripcion', name: 'descripcion'},
+            {data:'created_at',name:'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
 
         language: {
-            search: '<span>Buscar:</span> _INPUT_',
-            lengthMenu: '<span>Ver:</span> _MENU_',
+            search: '<span class="text-info"><i class="fas fa-search"></i></span>_INPUT_',
+            lengthMenu: '<i class="fas fa-align-justify text-primary"></i> _MENU_',
             emptyTable: "No existen registros",
             sZeroRecords:    "No se encontraron resultados",
             sInfoEmpty:      "No existen registros que contabilizar",
             sInfoFiltered:   "(filtrado de un total de _MAX_ registros)",
             sInfo:           "Mostrando del registro _START_ al _END_ de un total de _TOTAL_ datos",
             paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' },
-            processing: "Cargando..."
+            processing: '<div class="spinner-border text-info" role="status"><span class="sr-only"></span></div>'
         },
+        rowCallback:function(row,data){      
+            if(data[0]!=""){
+                $valor=$($(row).find("td")[0]).html();
+                $($(row).find("td")[0]).text('');
+                $($(row).find("td")[0]).append('<span class="badge badge-pill badge-info">'+$valor+'</span>');        
+              }
+              if(data[1]!=""){
+                  $($(row).find("td")[1]).addClass('table-warning');
+              }
+              if(data[1]!=""){
+                $($(row).find("td")[3]).addClass('d-flex justify-content-end');
+            }
+            
+        }
 
     });
 
@@ -61,10 +75,7 @@ $('#btn_categoria').click(function (e) {
                 if(datos.responseJSON.errors.nombre){
                     $('#error_nombre').html('<p class="text-danger">'+datos.responseJSON.errors.nombre[0] + '</p>').show();
                 }
-                if(datos.responseJSON.errors.descripcion){
-                    $('#error_descripcion').html('<p class="text-danger">'+datos.responseJSON.errors.descripcion[0] + '</p>').show();
-                }
-            
+                            
             }
         }
     });
@@ -142,7 +153,6 @@ $('body').on('click','.editar',function(){
     IniciarModalEditar();        
     $.get("categoria/"+categoria_id_editar+'/edit', function (datos) {
     $('#nombre_editar').val(datos.nombre);
-    $('#descripcion_editar').val(datos.descripcion);
     
 })
 });

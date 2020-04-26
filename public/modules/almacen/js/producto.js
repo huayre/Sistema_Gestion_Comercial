@@ -47,6 +47,9 @@ var tabla=$('#tabla_productos').DataTable({
          if(data[5]!=""){
             $($(row).find("td")[5]).addClass('table-success');
         }
+        if(data[7]!=""){
+            $($(row).find("td")[7]).addClass('d-flex justify-content-end');
+        }
       
         
     }

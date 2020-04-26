@@ -15,12 +15,6 @@
                         <div id="error_nombre_editar"></div>
                     </div>
 
-                    <div class="form-group">
-                        <label >Descripción:</label>
-                        <textarea class="form-control" id="descripcion_editar" name="descripcion" placeholder="Ingrese la descripcion de la categoria"></textarea>
-                        <div id="error_descripcion_editar"></div>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="btn_categoria_editar">Guardar</button>

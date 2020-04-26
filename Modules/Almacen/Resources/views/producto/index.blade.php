@@ -19,11 +19,12 @@
             <th>N°</th>
             <th>Nombre</th>
             <th>Cantidad</th>
-            <th>Marca</th>
-            <th>Categoría</th>
             <th>Precio</th>
-            <th>Alerta</th>
-            <th width="280px">Opciones</th>
+            <th>Categoría</th>
+            <th>Marca</th>
+            <th>U. Medida</th>            
+            <th> nº de Alerta</th>
+            <th class="text-center">Opciones</th>
         </tr>
         </thead>
         <tbody>

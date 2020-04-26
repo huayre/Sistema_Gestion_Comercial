@@ -21,11 +21,11 @@ class UnidadMedidaService
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editar"><i class="fa fa-edit"></i>Editar</a>';
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-info btn-sm editar"><i class="fa fa-edit"></i>Editar</a>';
 
                 $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm eliminar"><i class="fa fa-trash"></i> Eliminar</a>';
 
-                return $btn;
+                return '<div style="width:170px">'.$btn.'</div>';
             })
             ->rawColumns(['action'])
             ->make(true);

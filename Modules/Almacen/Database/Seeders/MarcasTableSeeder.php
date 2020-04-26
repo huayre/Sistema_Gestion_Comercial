@@ -4,8 +4,8 @@ namespace Modules\Almacen\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
-class AlmacenDatabaseSeeder extends Seeder
+use Modules\Almacen\Entities\Marca;
+class MarcasTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class AlmacenDatabaseSeeder extends Seeder
      */
     public function run()
     {
-             $this->call(MarcasTableSeeder::class);
+       factory(Marca::class,5000)->create();
     }
 }

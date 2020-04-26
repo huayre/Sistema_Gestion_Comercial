@@ -29,6 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!--DataTables-->
     <link rel="stylesheet" href="{{asset('paquetes/datatables/dataTables.bootstrap4.min.css')}}">
+   
     <!--Alertas-->
     <!--Toast-->
     <link rel="stylesheet" href="{{asset("paquetes/toast/jquery.toast.min.css")}}">
@@ -275,6 +276,7 @@
 <script src="{{asset("paquetes/toast/jquery.toast.min.js")}}"></script>
 <!-- bootstrap-select -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
 
 
 <script src="{{asset("js/principal.js")}}"></script>

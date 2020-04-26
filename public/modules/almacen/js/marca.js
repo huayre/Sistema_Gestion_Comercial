@@ -20,7 +20,7 @@ var tabla=$('#tabla_marcas').DataTable({
 
     language: {
         search: '<span class="text-info"><i class="fas fa-search"></i></span>_INPUT_',
-        lengthMenu: '<span>Ver:</span> _MENU_',
+        lengthMenu: '<i class="fas fa-align-justify text-primary"></i> _MENU_',
         emptyTable: "No existen registros",
         sZeroRecords:    "No se encontraron resultados",
         sInfoEmpty:      "No existen registros que contabilizar",
@@ -38,6 +38,9 @@ var tabla=$('#tabla_marcas').DataTable({
           if(data[1]!=""){
               $($(row).find("td")[1]).addClass('table-warning');
           }
+          if(data[3]!=""){
+            $($(row).find("td")[3]).addClass('d-flex justify-content-end');
+        }
         
     }
 });

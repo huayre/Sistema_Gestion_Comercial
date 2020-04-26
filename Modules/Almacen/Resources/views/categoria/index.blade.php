@@ -15,14 +15,14 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearcategoria" data-whatever="@mdo" onclick="LimpiarModal()">
             <i class="fas fa-plus-circle"></i> NUEVA CATEGORÍA</button>
     </h3>
-  <div class="">
-    <table class="table table-responsive table-hover  w-100  " id="tabla_categorias" >
+  <div class="table-responsive">
+    <table class="table  table-hover  w-100  " id="tabla_categorias" >
         <thead class="bg-primary">
         <tr>
             <th>N°</th>
             <th>Nombre</th>
-            <th>Descripción</th>
-            <th width="280px">Opciones</th>
+            <th>Fecha de Registro</th>
+            <th width="280px " class="text-center">Opciones</th>
         </tr>
         </thead>
         <tbody>
