@@ -3,5 +3,6 @@
     "Compras": true,
     "Ventas": true,
     "Acceso": true,
-    "Otros": true
+    "Otros": true,
+    "Empresa": true
 }
